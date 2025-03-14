@@ -1,932 +1,1138 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
-  <script data-cfasync="false" data-no-defer="1" data-no-minify="1" data-no-optimize="1">
-    var ewww_webp_supported = !1;
-    function check_webp_feature(A, e) {
-      var w;
-      (e = void 0 !== e ? e : function () {}),
-        ewww_webp_supported
-          ? e(ewww_webp_supported)
-          : (((w = new Image()).onload = function () {
-              (ewww_webp_supported = 0 < w.width && 0 < w.height), e && e(ewww_webp_supported);
-            }),
-            (w.onerror = function () {
-              e && e(!1);
-            }),
-            (w.src =
-              'data:image/webp;base64,' +
-              {
-                alpha:
-                  'UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAARBxAR/Q9ERP8DAABWUDggGAAAABQBAJ0BKgEAAQAAAP4AAA3AAP7mtQAAAA=='
-              }[A]));
-    }
-    check_webp_feature('alpha');
-  </script>
-  <script data-cfasync="false" data-no-defer="1" data-no-minify="1" data-no-optimize="1">
-    var Arrive = (function (c, w) {
-        'use strict';
-        if (c.MutationObserver && 'undefined' != typeof HTMLElement) {
-          var r,
-            a = 0,
-            u =
-              ((r =
-                HTMLElement.prototype.matches ||
-                HTMLElement.prototype.webkitMatchesSelector ||
-                HTMLElement.prototype.mozMatchesSelector ||
-                HTMLElement.prototype.msMatchesSelector),
-              {
-                matchesSelector: function (e, t) {
-                  return e instanceof HTMLElement && r.call(e, t);
-                },
-                addMethod: function (e, t, r) {
-                  var a = e[t];
-                  e[t] = function () {
-                    return r.length == arguments.length
-                      ? r.apply(this, arguments)
-                      : 'function' == typeof a
+  <head>
+    <script
+      data-cfasync="false"
+      data-no-defer="1"
+      data-no-minify="1"
+      data-no-optimize="1"
+    >
+      var ewww_webp_supported = !1;
+      function check_webp_feature(A, e) {
+        var w;
+        (e = void 0 !== e ? e : function () {}),
+          ewww_webp_supported
+            ? e(ewww_webp_supported)
+            : (((w = new Image()).onload = function () {
+                (ewww_webp_supported = 0 < w.width && 0 < w.height),
+                  e && e(ewww_webp_supported);
+              }),
+              (w.onerror = function () {
+                e && e(!1);
+              }),
+              (w.src =
+                "data:image/webp;base64," +
+                {
+                  alpha:
+                    "UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAARBxAR/Q9ERP8DAABWUDggGAAAABQBAJ0BKgEAAQAAAP4AAA3AAP7mtQAAAA==",
+                }[A]));
+      }
+      check_webp_feature("alpha");
+    </script>
+    <script
+      data-cfasync="false"
+      data-no-defer="1"
+      data-no-minify="1"
+      data-no-optimize="1"
+    >
+      var Arrive = (function (c, w) {
+          "use strict";
+          if (c.MutationObserver && "undefined" != typeof HTMLElement) {
+            var r,
+              a = 0,
+              u =
+                ((r =
+                  HTMLElement.prototype.matches ||
+                  HTMLElement.prototype.webkitMatchesSelector ||
+                  HTMLElement.prototype.mozMatchesSelector ||
+                  HTMLElement.prototype.msMatchesSelector),
+                {
+                  matchesSelector: function (e, t) {
+                    return e instanceof HTMLElement && r.call(e, t);
+                  },
+                  addMethod: function (e, t, r) {
+                    var a = e[t];
+                    e[t] = function () {
+                      return r.length == arguments.length
+                        ? r.apply(this, arguments)
+                        : "function" == typeof a
                         ? a.apply(this, arguments)
                         : void 0;
+                    };
+                  },
+                  callCallbacks: function (e, t) {
+                    t &&
+                      t.options.onceOnly &&
+                      1 == t.firedElems.length &&
+                      (e = [e[0]]);
+                    for (var r, a = 0; (r = e[a]); a++)
+                      r && r.callback && r.callback.call(r.elem, r.elem);
+                    t &&
+                      t.options.onceOnly &&
+                      1 == t.firedElems.length &&
+                      t.me.unbindEventWithSelectorAndCallback.call(
+                        t.target,
+                        t.selector,
+                        t.callback
+                      );
+                  },
+                  checkChildNodesRecursively: function (e, t, r, a) {
+                    for (var i, n = 0; (i = e[n]); n++)
+                      r(i, t, a) && a.push({ callback: t.callback, elem: i }),
+                        0 < i.childNodes.length &&
+                          u.checkChildNodesRecursively(i.childNodes, t, r, a);
+                  },
+                  mergeArrays: function (e, t) {
+                    var r,
+                      a = {};
+                    for (r in e) e.hasOwnProperty(r) && (a[r] = e[r]);
+                    for (r in t) t.hasOwnProperty(r) && (a[r] = t[r]);
+                    return a;
+                  },
+                  toElementsArray: function (e) {
+                    return (e =
+                      void 0 !== e && ("number" != typeof e.length || e === c)
+                        ? [e]
+                        : e);
+                  },
+                }),
+              e =
+                ((l.prototype.addEvent = function (e, t, r, a) {
+                  a = {
+                    target: e,
+                    selector: t,
+                    options: r,
+                    callback: a,
+                    firedElems: [],
                   };
-                },
-                callCallbacks: function (e, t) {
-                  t && t.options.onceOnly && 1 == t.firedElems.length && (e = [e[0]]);
-                  for (var r, a = 0; (r = e[a]); a++)
-                    r && r.callback && r.callback.call(r.elem, r.elem);
-                  t &&
-                    t.options.onceOnly &&
-                    1 == t.firedElems.length &&
-                    t.me.unbindEventWithSelectorAndCallback.call(t.target, t.selector, t.callback);
-                },
-                checkChildNodesRecursively: function (e, t, r, a) {
-                  for (var i, n = 0; (i = e[n]); n++)
-                    r(i, t, a) && a.push({ callback: t.callback, elem: i }),
-                      0 < i.childNodes.length &&
-                        u.checkChildNodesRecursively(i.childNodes, t, r, a);
-                },
-                mergeArrays: function (e, t) {
-                  var r,
-                    a = {};
-                  for (r in e) e.hasOwnProperty(r) && (a[r] = e[r]);
-                  for (r in t) t.hasOwnProperty(r) && (a[r] = t[r]);
-                  return a;
-                },
-                toElementsArray: function (e) {
-                  return (e = void 0 !== e && ('number' != typeof e.length || e === c) ? [e] : e);
-                }
-              }),
-            e =
-              ((l.prototype.addEvent = function (e, t, r, a) {
-                a = { target: e, selector: t, options: r, callback: a, firedElems: [] };
-                return this._beforeAdding && this._beforeAdding(a), this._eventsBucket.push(a), a;
-              }),
-              (l.prototype.removeEvent = function (e) {
-                for (var t, r = this._eventsBucket.length - 1; (t = this._eventsBucket[r]); r--)
-                  e(t) &&
-                    (this._beforeRemoving && this._beforeRemoving(t),
-                    (t = this._eventsBucket.splice(r, 1)) && t.length && (t[0].callback = null));
-              }),
-              (l.prototype.beforeAdding = function (e) {
-                this._beforeAdding = e;
-              }),
-              (l.prototype.beforeRemoving = function (e) {
-                this._beforeRemoving = e;
-              }),
-              l),
-            t = function (i, n) {
-              var o = new e(),
-                l = this,
-                s = { fireOnAttributesModification: !1 };
-              return (
-                o.beforeAdding(function (t) {
-                  var e = t.target;
-                  (e !== c.document && e !== c) || (e = document.getElementsByTagName('html')[0]);
-                  var r = new MutationObserver(function (e) {
-                      n.call(this, e, t);
-                    }),
-                    a = i(t.options);
-                  r.observe(e, a), (t.observer = r), (t.me = l);
+                  return (
+                    this._beforeAdding && this._beforeAdding(a),
+                    this._eventsBucket.push(a),
+                    a
+                  );
                 }),
-                o.beforeRemoving(function (e) {
-                  e.observer.disconnect();
+                (l.prototype.removeEvent = function (e) {
+                  for (
+                    var t, r = this._eventsBucket.length - 1;
+                    (t = this._eventsBucket[r]);
+                    r--
+                  )
+                    e(t) &&
+                      (this._beforeRemoving && this._beforeRemoving(t),
+                      (t = this._eventsBucket.splice(r, 1)) &&
+                        t.length &&
+                        (t[0].callback = null));
                 }),
-                (this.bindEvent = function (e, t, r) {
-                  t = u.mergeArrays(s, t);
-                  for (var a = u.toElementsArray(this), i = 0; i < a.length; i++)
-                    o.addEvent(a[i], e, t, r);
+                (l.prototype.beforeAdding = function (e) {
+                  this._beforeAdding = e;
                 }),
-                (this.unbindEvent = function () {
-                  var r = u.toElementsArray(this);
-                  o.removeEvent(function (e) {
-                    for (var t = 0; t < r.length; t++)
-                      if (this === w || e.target === r[t]) return !0;
-                    return !1;
-                  });
+                (l.prototype.beforeRemoving = function (e) {
+                  this._beforeRemoving = e;
                 }),
-                (this.unbindEventWithSelectorOrCallback = function (r) {
-                  var a = u.toElementsArray(this),
-                    i = r,
-                    e =
-                      'function' == typeof r
-                        ? function (e) {
-                            for (var t = 0; t < a.length; t++)
-                              if ((this === w || e.target === a[t]) && e.callback === i) return !0;
-                            return !1;
-                          }
-                        : function (e) {
-                            for (var t = 0; t < a.length; t++)
-                              if ((this === w || e.target === a[t]) && e.selector === r) return !0;
-                            return !1;
-                          };
-                  o.removeEvent(e);
-                }),
-                (this.unbindEventWithSelectorAndCallback = function (r, a) {
-                  var i = u.toElementsArray(this);
-                  o.removeEvent(function (e) {
-                    for (var t = 0; t < i.length; t++)
-                      if ((this === w || e.target === i[t]) && e.selector === r && e.callback === a)
-                        return !0;
-                    return !1;
-                  });
-                }),
-                this
-              );
-            },
-            i = new (function () {
-              var s = { fireOnAttributesModification: !1, onceOnly: !1, existing: !1 };
-              function n(e, t, r) {
+                l),
+              t = function (i, n) {
+                var o = new e(),
+                  l = this,
+                  s = { fireOnAttributesModification: !1 };
                 return (
-                  !(
-                    !u.matchesSelector(e, t.selector) ||
-                    (e._id === w && (e._id = a++), -1 != t.firedElems.indexOf(e._id))
-                  ) && (t.firedElems.push(e._id), !0)
+                  o.beforeAdding(function (t) {
+                    var e = t.target;
+                    (e !== c.document && e !== c) ||
+                      (e = document.getElementsByTagName("html")[0]);
+                    var r = new MutationObserver(function (e) {
+                        n.call(this, e, t);
+                      }),
+                      a = i(t.options);
+                    r.observe(e, a), (t.observer = r), (t.me = l);
+                  }),
+                  o.beforeRemoving(function (e) {
+                    e.observer.disconnect();
+                  }),
+                  (this.bindEvent = function (e, t, r) {
+                    t = u.mergeArrays(s, t);
+                    for (
+                      var a = u.toElementsArray(this), i = 0;
+                      i < a.length;
+                      i++
+                    )
+                      o.addEvent(a[i], e, t, r);
+                  }),
+                  (this.unbindEvent = function () {
+                    var r = u.toElementsArray(this);
+                    o.removeEvent(function (e) {
+                      for (var t = 0; t < r.length; t++)
+                        if (this === w || e.target === r[t]) return !0;
+                      return !1;
+                    });
+                  }),
+                  (this.unbindEventWithSelectorOrCallback = function (r) {
+                    var a = u.toElementsArray(this),
+                      i = r,
+                      e =
+                        "function" == typeof r
+                          ? function (e) {
+                              for (var t = 0; t < a.length; t++)
+                                if (
+                                  (this === w || e.target === a[t]) &&
+                                  e.callback === i
+                                )
+                                  return !0;
+                              return !1;
+                            }
+                          : function (e) {
+                              for (var t = 0; t < a.length; t++)
+                                if (
+                                  (this === w || e.target === a[t]) &&
+                                  e.selector === r
+                                )
+                                  return !0;
+                              return !1;
+                            };
+                    o.removeEvent(e);
+                  }),
+                  (this.unbindEventWithSelectorAndCallback = function (r, a) {
+                    var i = u.toElementsArray(this);
+                    o.removeEvent(function (e) {
+                      for (var t = 0; t < i.length; t++)
+                        if (
+                          (this === w || e.target === i[t]) &&
+                          e.selector === r &&
+                          e.callback === a
+                        )
+                          return !0;
+                      return !1;
+                    });
+                  }),
+                  this
                 );
-              }
-              var c = (i = new t(
-                function (e) {
-                  var t = { attributes: !1, childList: !0, subtree: !0 };
-                  return e.fireOnAttributesModification && (t.attributes = !0), t;
-                },
-                function (e, i) {
-                  e.forEach(function (e) {
-                    var t = e.addedNodes,
-                      r = e.target,
-                      a = [];
-                    null !== t && 0 < t.length
-                      ? u.checkChildNodesRecursively(t, i, n, a)
-                      : 'attributes' === e.type &&
-                        n(r, i) &&
-                        a.push({ callback: i.callback, elem: r }),
-                      u.callCallbacks(a, i);
-                  });
-                }
-              )).bindEvent;
-              return (
-                (i.bindEvent = function (e, t, r) {
-                  t = void 0 === r ? ((r = t), s) : u.mergeArrays(s, t);
-                  var a = u.toElementsArray(this);
-                  if (t.existing) {
-                    for (var i = [], n = 0; n < a.length; n++)
-                      for (var o = a[n].querySelectorAll(e), l = 0; l < o.length; l++)
-                        i.push({ callback: r, elem: o[l] });
-                    if (t.onceOnly && i.length) return r.call(i[0].elem, i[0].elem);
-                    setTimeout(u.callCallbacks, 1, i);
-                  }
-                  c.call(this, e, t, r);
-                }),
-                i
-              );
-            })(),
-            o = new (function () {
-              var a = {};
-              function i(e, t) {
-                return u.matchesSelector(e, t.selector);
-              }
-              var n = (o = new t(
-                function () {
-                  return { childList: !0, subtree: !0 };
-                },
-                function (e, r) {
-                  e.forEach(function (e) {
-                    var t = e.removedNodes,
-                      e = [];
-                    null !== t && 0 < t.length && u.checkChildNodesRecursively(t, r, i, e),
-                      u.callCallbacks(e, r);
-                  });
-                }
-              )).bindEvent;
-              return (
-                (o.bindEvent = function (e, t, r) {
-                  (t = void 0 === r ? ((r = t), a) : u.mergeArrays(a, t)), n.call(this, e, t, r);
-                }),
-                o
-              );
-            })();
-          d(HTMLElement.prototype),
-            d(NodeList.prototype),
-            d(HTMLCollection.prototype),
-            d(HTMLDocument.prototype),
-            d(Window.prototype);
-          var n = {};
-          return s(i, n, 'unbindAllArrive'), s(o, n, 'unbindAllLeave'), n;
-        }
-        function l() {
-          (this._eventsBucket = []), (this._beforeAdding = null), (this._beforeRemoving = null);
-        }
-        function s(e, t, r) {
-          u.addMethod(t, r, e.unbindEvent),
-            u.addMethod(t, r, e.unbindEventWithSelectorOrCallback),
-            u.addMethod(t, r, e.unbindEventWithSelectorAndCallback);
-        }
-        function d(e) {
-          (e.arrive = i.bindEvent),
-            s(i, e, 'unbindArrive'),
-            (e.leave = o.bindEvent),
-            s(o, e, 'unbindLeave');
-        }
-      })(window, void 0),
-      ewww_webp_supported = !1;
-    function check_webp_feature(e, t) {
-      var r;
-      ewww_webp_supported
-        ? t(ewww_webp_supported)
-        : (((r = new Image()).onload = function () {
-            (ewww_webp_supported = 0 < r.width && 0 < r.height), t(ewww_webp_supported);
-          }),
-          (r.onerror = function () {
-            t(!1);
-          }),
-          (r.src =
-            'data:image/webp;base64,' +
-            {
-              alpha:
-                'UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAARBxAR/Q9ERP8DAABWUDggGAAAABQBAJ0BKgEAAQAAAP4AAA3AAP7mtQAAAA==',
-              animation:
-                'UklGRlIAAABXRUJQVlA4WAoAAAASAAAAAAAAAAAAQU5JTQYAAAD/////AABBTk1GJgAAAAAAAAAAAAAAAAAAAGQAAABWUDhMDQAAAC8AAAAQBxAREYiI/gcA'
-            }[e]));
-    }
-    function ewwwLoadImages(e) {
-      if (e) {
-        for (
-          var t = document.querySelectorAll(
-              '.batch-image img, .image-wrapper a, .ngg-pro-masonry-item a, .ngg-galleria-offscreen-seo-wrapper a'
-            ),
-            r = 0,
-            a = t.length;
-          r < a;
-          r++
-        )
-          ewwwAttr(t[r], 'data-src', t[r].getAttribute('data-webp')),
-            ewwwAttr(t[r], 'data-thumbnail', t[r].getAttribute('data-webp-thumbnail'));
-        for (
-          var i = document.querySelectorAll('.rev_slider ul li'), r = 0, a = i.length;
-          r < a;
-          r++
-        ) {
-          ewwwAttr(i[r], 'data-thumb', i[r].getAttribute('data-webp-thumb'));
-          for (var n = 1; n < 11; )
-            ewwwAttr(i[r], 'data-param' + n, i[r].getAttribute('data-webp-param' + n)), n++;
-        }
-        for (r = 0, a = (i = document.querySelectorAll('.rev_slider img')).length; r < a; r++)
-          ewwwAttr(i[r], 'data-lazyload', i[r].getAttribute('data-webp-lazyload'));
-        for (
-          var o = document.querySelectorAll('div.woocommerce-product-gallery__image'),
-            r = 0,
-            a = o.length;
-          r < a;
-          r++
-        )
-          ewwwAttr(o[r], 'data-thumb', o[r].getAttribute('data-webp-thumb'));
-      }
-      for (var l = document.querySelectorAll('video'), r = 0, a = l.length; r < a; r++)
-        ewwwAttr(
-          l[r],
-          'poster',
-          e ? l[r].getAttribute('data-poster-webp') : l[r].getAttribute('data-poster-image')
-        );
-      for (
-        var s, c = document.querySelectorAll('img.ewww_webp_lazy_load'), r = 0, a = c.length;
-        r < a;
-        r++
-      )
-        e &&
-          (ewwwAttr(c[r], 'data-lazy-srcset', c[r].getAttribute('data-lazy-srcset-webp')),
-          ewwwAttr(c[r], 'data-srcset', c[r].getAttribute('data-srcset-webp')),
-          ewwwAttr(c[r], 'data-lazy-src', c[r].getAttribute('data-lazy-src-webp')),
-          ewwwAttr(c[r], 'data-src', c[r].getAttribute('data-src-webp')),
-          ewwwAttr(c[r], 'data-orig-file', c[r].getAttribute('data-webp-orig-file')),
-          ewwwAttr(c[r], 'data-medium-file', c[r].getAttribute('data-webp-medium-file')),
-          ewwwAttr(c[r], 'data-large-file', c[r].getAttribute('data-webp-large-file')),
-          null != (s = c[r].getAttribute('srcset')) &&
-            !1 !== s &&
-            s.includes('R0lGOD') &&
-            ewwwAttr(c[r], 'src', c[r].getAttribute('data-lazy-src-webp'))),
-          (c[r].className = c[r].className.replace(/\bewww_webp_lazy_load\b/, ''));
-      for (var w = document.querySelectorAll('.ewww_webp'), r = 0, a = w.length; r < a; r++)
-        e
-          ? (ewwwAttr(w[r], 'srcset', w[r].getAttribute('data-srcset-webp')),
-            ewwwAttr(w[r], 'src', w[r].getAttribute('data-src-webp')),
-            ewwwAttr(w[r], 'data-orig-file', w[r].getAttribute('data-webp-orig-file')),
-            ewwwAttr(w[r], 'data-medium-file', w[r].getAttribute('data-webp-medium-file')),
-            ewwwAttr(w[r], 'data-large-file', w[r].getAttribute('data-webp-large-file')),
-            ewwwAttr(w[r], 'data-large_image', w[r].getAttribute('data-webp-large_image')),
-            ewwwAttr(w[r], 'data-src', w[r].getAttribute('data-webp-src')))
-          : (ewwwAttr(w[r], 'srcset', w[r].getAttribute('data-srcset-img')),
-            ewwwAttr(w[r], 'src', w[r].getAttribute('data-src-img'))),
-          (w[r].className = w[r].className.replace(/\bewww_webp\b/, 'ewww_webp_loaded'));
-      window.jQuery &&
-        jQuery.fn.isotope &&
-        jQuery.fn.imagesLoaded &&
-        (jQuery('.fusion-posts-container-infinite').imagesLoaded(function () {
-          jQuery('.fusion-posts-container-infinite').hasClass('isotope') &&
-            jQuery('.fusion-posts-container-infinite').isotope();
-        }),
-        jQuery(
-          '.fusion-portfolio:not(.fusion-recent-works) .fusion-portfolio-wrapper'
-        ).imagesLoaded(function () {
-          jQuery('.fusion-portfolio:not(.fusion-recent-works) .fusion-portfolio-wrapper').isotope();
-        }));
-    }
-    function ewwwWebPInit(e) {
-      ewwwLoadImages(e),
-        ewwwNggLoadGalleries(e),
-        document.arrive('.ewww_webp', function () {
-          ewwwLoadImages(e);
-        }),
-        document.arrive('.ewww_webp_lazy_load', function () {
-          ewwwLoadImages(e);
-        }),
-        document.arrive('videos', function () {
-          ewwwLoadImages(e);
-        }),
-        'loading' == document.readyState
-          ? document.addEventListener('DOMContentLoaded', ewwwJSONParserInit)
-          : ('undefined' != typeof galleries && ewwwNggParseGalleries(e),
-            ewwwWooParseVariations(e));
-    }
-    function ewwwAttr(e, t, r) {
-      null != r && !1 !== r && e.setAttribute(t, r);
-    }
-    function ewwwJSONParserInit() {
-      'undefined' != typeof galleries && check_webp_feature('alpha', ewwwNggParseGalleries),
-        check_webp_feature('alpha', ewwwWooParseVariations);
-    }
-    function ewwwWooParseVariations(e) {
-      if (e)
-        for (
-          var t = document.querySelectorAll('form.variations_form'), r = 0, a = t.length;
-          r < a;
-          r++
-        ) {
-          var i = t[r].getAttribute('data-product_variations'),
-            n = !1;
-          try {
-            for (var o in (i = JSON.parse(i)))
-              void 0 !== i[o] &&
-                void 0 !== i[o].image &&
-                (void 0 !== i[o].image.src_webp &&
-                  ((i[o].image.src = i[o].image.src_webp), (n = !0)),
-                void 0 !== i[o].image.srcset_webp &&
-                  ((i[o].image.srcset = i[o].image.srcset_webp), (n = !0)),
-                void 0 !== i[o].image.full_src_webp &&
-                  ((i[o].image.full_src = i[o].image.full_src_webp), (n = !0)),
-                void 0 !== i[o].image.gallery_thumbnail_src_webp &&
-                  ((i[o].image.gallery_thumbnail_src = i[o].image.gallery_thumbnail_src_webp),
-                  (n = !0)),
-                void 0 !== i[o].image.thumb_src_webp &&
-                  ((i[o].image.thumb_src = i[o].image.thumb_src_webp), (n = !0)));
-            n && ewwwAttr(t[r], 'data-product_variations', JSON.stringify(i));
-          } catch (e) {}
-        }
-    }
-    function ewwwNggParseGalleries(e) {
-      if (e)
-        for (var t in galleries) {
-          var r = galleries[t];
-          galleries[t].images_list = ewwwNggParseImageList(r.images_list);
-        }
-    }
-    function ewwwNggLoadGalleries(e) {
-      e &&
-        document.addEventListener('ngg.galleria.themeadded', function (e, t) {
-          (window.ngg_galleria._create_backup = window.ngg_galleria.create),
-            (window.ngg_galleria.create = function (e, t) {
-              var r = $(e).data('id');
-              return (
-                (galleries['gallery_' + r].images_list = ewwwNggParseImageList(
-                  galleries['gallery_' + r].images_list
-                )),
-                window.ngg_galleria._create_backup(e, t)
-              );
-            });
-        });
-    }
-    function ewwwNggParseImageList(e) {
-      for (var t in e) {
-        var r = e[t];
-        if (
-          (void 0 !== r['image-webp'] &&
-            ((e[t].image = r['image-webp']), delete e[t]['image-webp']),
-          void 0 !== r['thumb-webp'] && ((e[t].thumb = r['thumb-webp']), delete e[t]['thumb-webp']),
-          void 0 !== r.full_image_webp &&
-            ((e[t].full_image = r.full_image_webp), delete e[t].full_image_webp),
-          void 0 !== r.srcsets)
-        )
-          for (var a in r.srcsets)
-            (nggSrcset = r.srcsets[a]),
-              void 0 !== r.srcsets[a + '-webp'] &&
-                ((e[t].srcsets[a] = r.srcsets[a + '-webp']), delete e[t].srcsets[a + '-webp']);
-        if (void 0 !== r.full_srcsets)
-          for (var i in r.full_srcsets)
-            (nggFSrcset = r.full_srcsets[i]),
-              void 0 !== r.full_srcsets[i + '-webp'] &&
-                ((e[t].full_srcsets[i] = r.full_srcsets[i + '-webp']),
-                delete e[t].full_srcsets[i + '-webp']);
-      }
-      return e;
-    }
-    check_webp_feature('alpha', ewwwWebPInit);
-  </script>
-  <meta
-    name="robots"
-    content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
-  />
-
-  <!-- This site is optimized with the Yoast SEO plugin v18.2 - https://yoast.com/wordpress/plugins/seo/ -->
-  <title>Кредит під заставу нерухомості в Києві та області</title>
-  <meta
-    name="description"
-    content="Вирішіть свої фінансові завдання гарантовано, отримавши термінову позику за допомогою ЦЕНТРУ СОЦІАЛЬНОГО КРЕДИТУВАННЯ"
-  />
-  <link rel="canonical" href="https://socialcredit.kiev.ua/" />
-  <meta property="og:locale" content="ru_RU" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Кредит під заставу нерухомості в Києві та області" />
-  <meta
-    property="og:description"
-    content="Вирішіть свої фінансові завдання гарантовано, отримавши термінову позику за допомогою ЦЕНТРУ СОЦІАЛЬНОГО КРЕДИТУВАННЯ"
-  />
-  <meta property="og:url" content="https://socialcredit.kiev.ua/" />
-  <meta property="og:site_name" content="Готівка під заставу нерухомості в Києві та області." />
-  <meta property="article:modified_time" content="2023-10-14T10:08:13+00:00" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <script type="application/ld+json" class="yoast-schema-graph">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "WebSite",
-          "@id": "https://socialcredit.kiev.ua/#website",
-          "url": "https://socialcredit.kiev.ua/",
-          "name": "Готівка під заставу нерухомості в Києві та області.",
-          "description": "Отримайте гроші під заставу без підтвердження прибутків у день звернення",
-          "potentialAction": [
-            {
-              "@type": "SearchAction",
-              "target": {
-                "@type": "EntryPoint",
-                "urlTemplate": "https://socialcredit.kiev.ua/?s={search_term_string}"
               },
-              "query-input": "required name=search_term_string"
-            }
-          ],
-          "inLanguage": "ru-RU"
-        },
-        {
-          "@type": "WebPage",
-          "@id": "https://socialcredit.kiev.ua/#webpage",
-          "url": "https://socialcredit.kiev.ua/",
-          "name": "Кредит під заставу нерухомості в Києві та області",
-          "isPartOf": { "@id": "https://socialcredit.kiev.ua/#website" },
-          "datePublished": "2022-08-22T06:05:35+00:00",
-          "dateModified": "2023-10-14T10:08:13+00:00",
-          "description": "Вирішіть свої фінансові завдання гарантовано, отримавши термінову позику за допомогою ЦЕНТРУ СОЦІАЛЬНОГО КРЕДИТУВАННЯ",
-          "breadcrumb": { "@id": "https://socialcredit.kiev.ua/#breadcrumb" },
-          "inLanguage": "ru-RU",
-          "potentialAction": [
-            { "@type": "ReadAction", "target": ["https://socialcredit.kiev.ua/"] }
-          ]
-        },
-        {
-          "@type": "BreadcrumbList",
-          "@id": "https://socialcredit.kiev.ua/#breadcrumb",
-          "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home" }]
+              i = new (function () {
+                var s = {
+                  fireOnAttributesModification: !1,
+                  onceOnly: !1,
+                  existing: !1,
+                };
+                function n(e, t, r) {
+                  return (
+                    !(
+                      !u.matchesSelector(e, t.selector) ||
+                      (e._id === w && (e._id = a++),
+                      -1 != t.firedElems.indexOf(e._id))
+                    ) && (t.firedElems.push(e._id), !0)
+                  );
+                }
+                var c = (i = new t(
+                  function (e) {
+                    var t = { attributes: !1, childList: !0, subtree: !0 };
+                    return (
+                      e.fireOnAttributesModification && (t.attributes = !0), t
+                    );
+                  },
+                  function (e, i) {
+                    e.forEach(function (e) {
+                      var t = e.addedNodes,
+                        r = e.target,
+                        a = [];
+                      null !== t && 0 < t.length
+                        ? u.checkChildNodesRecursively(t, i, n, a)
+                        : "attributes" === e.type &&
+                          n(r, i) &&
+                          a.push({ callback: i.callback, elem: r }),
+                        u.callCallbacks(a, i);
+                    });
+                  }
+                )).bindEvent;
+                return (
+                  (i.bindEvent = function (e, t, r) {
+                    t = void 0 === r ? ((r = t), s) : u.mergeArrays(s, t);
+                    var a = u.toElementsArray(this);
+                    if (t.existing) {
+                      for (var i = [], n = 0; n < a.length; n++)
+                        for (
+                          var o = a[n].querySelectorAll(e), l = 0;
+                          l < o.length;
+                          l++
+                        )
+                          i.push({ callback: r, elem: o[l] });
+                      if (t.onceOnly && i.length)
+                        return r.call(i[0].elem, i[0].elem);
+                      setTimeout(u.callCallbacks, 1, i);
+                    }
+                    c.call(this, e, t, r);
+                  }),
+                  i
+                );
+              })(),
+              o = new (function () {
+                var a = {};
+                function i(e, t) {
+                  return u.matchesSelector(e, t.selector);
+                }
+                var n = (o = new t(
+                  function () {
+                    return { childList: !0, subtree: !0 };
+                  },
+                  function (e, r) {
+                    e.forEach(function (e) {
+                      var t = e.removedNodes,
+                        e = [];
+                      null !== t &&
+                        0 < t.length &&
+                        u.checkChildNodesRecursively(t, r, i, e),
+                        u.callCallbacks(e, r);
+                    });
+                  }
+                )).bindEvent;
+                return (
+                  (o.bindEvent = function (e, t, r) {
+                    (t = void 0 === r ? ((r = t), a) : u.mergeArrays(a, t)),
+                      n.call(this, e, t, r);
+                  }),
+                  o
+                );
+              })();
+            d(HTMLElement.prototype),
+              d(NodeList.prototype),
+              d(HTMLCollection.prototype),
+              d(HTMLDocument.prototype),
+              d(Window.prototype);
+            var n = {};
+            return s(i, n, "unbindAllArrive"), s(o, n, "unbindAllLeave"), n;
+          }
+          function l() {
+            (this._eventsBucket = []),
+              (this._beforeAdding = null),
+              (this._beforeRemoving = null);
+          }
+          function s(e, t, r) {
+            u.addMethod(t, r, e.unbindEvent),
+              u.addMethod(t, r, e.unbindEventWithSelectorOrCallback),
+              u.addMethod(t, r, e.unbindEventWithSelectorAndCallback);
+          }
+          function d(e) {
+            (e.arrive = i.bindEvent),
+              s(i, e, "unbindArrive"),
+              (e.leave = o.bindEvent),
+              s(o, e, "unbindLeave");
+          }
+        })(window, void 0),
+        ewww_webp_supported = !1;
+      function check_webp_feature(e, t) {
+        var r;
+        ewww_webp_supported
+          ? t(ewww_webp_supported)
+          : (((r = new Image()).onload = function () {
+              (ewww_webp_supported = 0 < r.width && 0 < r.height),
+                t(ewww_webp_supported);
+            }),
+            (r.onerror = function () {
+              t(!1);
+            }),
+            (r.src =
+              "data:image/webp;base64," +
+              {
+                alpha:
+                  "UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAARBxAR/Q9ERP8DAABWUDggGAAAABQBAJ0BKgEAAQAAAP4AAA3AAP7mtQAAAA==",
+                animation:
+                  "UklGRlIAAABXRUJQVlA4WAoAAAASAAAAAAAAAAAAQU5JTQYAAAD/////AABBTk1GJgAAAAAAAAAAAAAAAAAAAGQAAABWUDhMDQAAAC8AAAAQBxAREYiI/gcA",
+              }[e]));
+      }
+      function ewwwLoadImages(e) {
+        if (e) {
+          for (
+            var t = document.querySelectorAll(
+                ".batch-image img, .image-wrapper a, .ngg-pro-masonry-item a, .ngg-galleria-offscreen-seo-wrapper a"
+              ),
+              r = 0,
+              a = t.length;
+            r < a;
+            r++
+          )
+            ewwwAttr(t[r], "data-src", t[r].getAttribute("data-webp")),
+              ewwwAttr(
+                t[r],
+                "data-thumbnail",
+                t[r].getAttribute("data-webp-thumbnail")
+              );
+          for (
+            var i = document.querySelectorAll(".rev_slider ul li"),
+              r = 0,
+              a = i.length;
+            r < a;
+            r++
+          ) {
+            ewwwAttr(i[r], "data-thumb", i[r].getAttribute("data-webp-thumb"));
+            for (var n = 1; n < 11; )
+              ewwwAttr(
+                i[r],
+                "data-param" + n,
+                i[r].getAttribute("data-webp-param" + n)
+              ),
+                n++;
+          }
+          for (
+            r = 0,
+              a = (i = document.querySelectorAll(".rev_slider img")).length;
+            r < a;
+            r++
+          )
+            ewwwAttr(
+              i[r],
+              "data-lazyload",
+              i[r].getAttribute("data-webp-lazyload")
+            );
+          for (
+            var o = document.querySelectorAll(
+                "div.woocommerce-product-gallery__image"
+              ),
+              r = 0,
+              a = o.length;
+            r < a;
+            r++
+          )
+            ewwwAttr(o[r], "data-thumb", o[r].getAttribute("data-webp-thumb"));
         }
-      ]
-    }
-  </script>
-  <!-- / Yoast SEO plugin. -->
+        for (
+          var l = document.querySelectorAll("video"), r = 0, a = l.length;
+          r < a;
+          r++
+        )
+          ewwwAttr(
+            l[r],
+            "poster",
+            e
+              ? l[r].getAttribute("data-poster-webp")
+              : l[r].getAttribute("data-poster-image")
+          );
+        for (
+          var s,
+            c = document.querySelectorAll("img.ewww_webp_lazy_load"),
+            r = 0,
+            a = c.length;
+          r < a;
+          r++
+        )
+          e &&
+            (ewwwAttr(
+              c[r],
+              "data-lazy-srcset",
+              c[r].getAttribute("data-lazy-srcset-webp")
+            ),
+            ewwwAttr(
+              c[r],
+              "data-srcset",
+              c[r].getAttribute("data-srcset-webp")
+            ),
+            ewwwAttr(
+              c[r],
+              "data-lazy-src",
+              c[r].getAttribute("data-lazy-src-webp")
+            ),
+            ewwwAttr(c[r], "data-src", c[r].getAttribute("data-src-webp")),
+            ewwwAttr(
+              c[r],
+              "data-orig-file",
+              c[r].getAttribute("data-webp-orig-file")
+            ),
+            ewwwAttr(
+              c[r],
+              "data-medium-file",
+              c[r].getAttribute("data-webp-medium-file")
+            ),
+            ewwwAttr(
+              c[r],
+              "data-large-file",
+              c[r].getAttribute("data-webp-large-file")
+            ),
+            null != (s = c[r].getAttribute("srcset")) &&
+              !1 !== s &&
+              s.includes("R0lGOD") &&
+              ewwwAttr(c[r], "src", c[r].getAttribute("data-lazy-src-webp"))),
+            (c[r].className = c[r].className.replace(
+              /\bewww_webp_lazy_load\b/,
+              ""
+            ));
+        for (
+          var w = document.querySelectorAll(".ewww_webp"), r = 0, a = w.length;
+          r < a;
+          r++
+        )
+          e
+            ? (ewwwAttr(w[r], "srcset", w[r].getAttribute("data-srcset-webp")),
+              ewwwAttr(w[r], "src", w[r].getAttribute("data-src-webp")),
+              ewwwAttr(
+                w[r],
+                "data-orig-file",
+                w[r].getAttribute("data-webp-orig-file")
+              ),
+              ewwwAttr(
+                w[r],
+                "data-medium-file",
+                w[r].getAttribute("data-webp-medium-file")
+              ),
+              ewwwAttr(
+                w[r],
+                "data-large-file",
+                w[r].getAttribute("data-webp-large-file")
+              ),
+              ewwwAttr(
+                w[r],
+                "data-large_image",
+                w[r].getAttribute("data-webp-large_image")
+              ),
+              ewwwAttr(w[r], "data-src", w[r].getAttribute("data-webp-src")))
+            : (ewwwAttr(w[r], "srcset", w[r].getAttribute("data-srcset-img")),
+              ewwwAttr(w[r], "src", w[r].getAttribute("data-src-img"))),
+            (w[r].className = w[r].className.replace(
+              /\bewww_webp\b/,
+              "ewww_webp_loaded"
+            ));
+        window.jQuery &&
+          jQuery.fn.isotope &&
+          jQuery.fn.imagesLoaded &&
+          (jQuery(".fusion-posts-container-infinite").imagesLoaded(function () {
+            jQuery(".fusion-posts-container-infinite").hasClass("isotope") &&
+              jQuery(".fusion-posts-container-infinite").isotope();
+          }),
+          jQuery(
+            ".fusion-portfolio:not(.fusion-recent-works) .fusion-portfolio-wrapper"
+          ).imagesLoaded(function () {
+            jQuery(
+              ".fusion-portfolio:not(.fusion-recent-works) .fusion-portfolio-wrapper"
+            ).isotope();
+          }));
+      }
+      function ewwwWebPInit(e) {
+        ewwwLoadImages(e),
+          ewwwNggLoadGalleries(e),
+          document.arrive(".ewww_webp", function () {
+            ewwwLoadImages(e);
+          }),
+          document.arrive(".ewww_webp_lazy_load", function () {
+            ewwwLoadImages(e);
+          }),
+          document.arrive("videos", function () {
+            ewwwLoadImages(e);
+          }),
+          "loading" == document.readyState
+            ? document.addEventListener("DOMContentLoaded", ewwwJSONParserInit)
+            : ("undefined" != typeof galleries && ewwwNggParseGalleries(e),
+              ewwwWooParseVariations(e));
+      }
+      function ewwwAttr(e, t, r) {
+        null != r && !1 !== r && e.setAttribute(t, r);
+      }
+      function ewwwJSONParserInit() {
+        "undefined" != typeof galleries &&
+          check_webp_feature("alpha", ewwwNggParseGalleries),
+          check_webp_feature("alpha", ewwwWooParseVariations);
+      }
+      function ewwwWooParseVariations(e) {
+        if (e)
+          for (
+            var t = document.querySelectorAll("form.variations_form"),
+              r = 0,
+              a = t.length;
+            r < a;
+            r++
+          ) {
+            var i = t[r].getAttribute("data-product_variations"),
+              n = !1;
+            try {
+              for (var o in (i = JSON.parse(i)))
+                void 0 !== i[o] &&
+                  void 0 !== i[o].image &&
+                  (void 0 !== i[o].image.src_webp &&
+                    ((i[o].image.src = i[o].image.src_webp), (n = !0)),
+                  void 0 !== i[o].image.srcset_webp &&
+                    ((i[o].image.srcset = i[o].image.srcset_webp), (n = !0)),
+                  void 0 !== i[o].image.full_src_webp &&
+                    ((i[o].image.full_src = i[o].image.full_src_webp),
+                    (n = !0)),
+                  void 0 !== i[o].image.gallery_thumbnail_src_webp &&
+                    ((i[o].image.gallery_thumbnail_src =
+                      i[o].image.gallery_thumbnail_src_webp),
+                    (n = !0)),
+                  void 0 !== i[o].image.thumb_src_webp &&
+                    ((i[o].image.thumb_src = i[o].image.thumb_src_webp),
+                    (n = !0)));
+              n && ewwwAttr(t[r], "data-product_variations", JSON.stringify(i));
+            } catch (e) {}
+          }
+      }
+      function ewwwNggParseGalleries(e) {
+        if (e)
+          for (var t in galleries) {
+            var r = galleries[t];
+            galleries[t].images_list = ewwwNggParseImageList(r.images_list);
+          }
+      }
+      function ewwwNggLoadGalleries(e) {
+        e &&
+          document.addEventListener("ngg.galleria.themeadded", function (e, t) {
+            (window.ngg_galleria._create_backup = window.ngg_galleria.create),
+              (window.ngg_galleria.create = function (e, t) {
+                var r = $(e).data("id");
+                return (
+                  (galleries["gallery_" + r].images_list =
+                    ewwwNggParseImageList(
+                      galleries["gallery_" + r].images_list
+                    )),
+                  window.ngg_galleria._create_backup(e, t)
+                );
+              });
+          });
+      }
+      function ewwwNggParseImageList(e) {
+        for (var t in e) {
+          var r = e[t];
+          if (
+            (void 0 !== r["image-webp"] &&
+              ((e[t].image = r["image-webp"]), delete e[t]["image-webp"]),
+            void 0 !== r["thumb-webp"] &&
+              ((e[t].thumb = r["thumb-webp"]), delete e[t]["thumb-webp"]),
+            void 0 !== r.full_image_webp &&
+              ((e[t].full_image = r.full_image_webp),
+              delete e[t].full_image_webp),
+            void 0 !== r.srcsets)
+          )
+            for (var a in r.srcsets)
+              (nggSrcset = r.srcsets[a]),
+                void 0 !== r.srcsets[a + "-webp"] &&
+                  ((e[t].srcsets[a] = r.srcsets[a + "-webp"]),
+                  delete e[t].srcsets[a + "-webp"]);
+          if (void 0 !== r.full_srcsets)
+            for (var i in r.full_srcsets)
+              (nggFSrcset = r.full_srcsets[i]),
+                void 0 !== r.full_srcsets[i + "-webp"] &&
+                  ((e[t].full_srcsets[i] = r.full_srcsets[i + "-webp"]),
+                  delete e[t].full_srcsets[i + "-webp"]);
+        }
+        return e;
+      }
+      check_webp_feature("alpha", ewwwWebPInit);
+    </script>
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
 
-  <link
-    rel="stylesheet"
-    id="classic-theme-styles-css"
-    href="wp-includes/css/classic-themes.min.css%3Fver=6.2.css"
-    type="text/css"
-    media="all"
-  />
-  <style id="global-styles-inline-css" type="text/css">
-    body {
-      --wp--preset--color--black: #000000;
-      --wp--preset--color--cyan-bluish-gray: #abb8c3;
-      --wp--preset--color--white: #ffffff;
-      --wp--preset--color--pale-pink: #f78da7;
-      --wp--preset--color--vivid-red: #cf2e2e;
-      --wp--preset--color--luminous-vivid-orange: #ff6900;
-      --wp--preset--color--luminous-vivid-amber: #fcb900;
-      --wp--preset--color--light-green-cyan: #7bdcb5;
-      --wp--preset--color--vivid-green-cyan: #00d084;
-      --wp--preset--color--pale-cyan-blue: #8ed1fc;
-      --wp--preset--color--vivid-cyan-blue: #0693e3;
-      --wp--preset--color--vivid-purple: #9b51e0;
-      --wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(
-        135deg,
-        rgba(6, 147, 227, 1) 0%,
-        rgb(155, 81, 224) 100%
-      );
-      --wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(
-        135deg,
-        rgb(122, 220, 180) 0%,
-        rgb(0, 208, 130) 100%
-      );
-      --wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(
-        135deg,
-        rgba(252, 185, 0, 1) 0%,
-        rgba(255, 105, 0, 1) 100%
-      );
-      --wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(
-        135deg,
-        rgba(255, 105, 0, 1) 0%,
-        rgb(207, 46, 46) 100%
-      );
-      --wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(
-        135deg,
-        rgb(238, 238, 238) 0%,
-        rgb(169, 184, 195) 100%
-      );
-      --wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(
-        135deg,
-        rgb(74, 234, 220) 0%,
-        rgb(151, 120, 209) 20%,
-        rgb(207, 42, 186) 40%,
-        rgb(238, 44, 130) 60%,
-        rgb(251, 105, 98) 80%,
-        rgb(254, 248, 76) 100%
-      );
-      --wp--preset--gradient--blush-light-purple: linear-gradient(
-        135deg,
-        rgb(255, 206, 236) 0%,
-        rgb(152, 150, 240) 100%
-      );
-      --wp--preset--gradient--blush-bordeaux: linear-gradient(
-        135deg,
-        rgb(254, 205, 165) 0%,
-        rgb(254, 45, 45) 50%,
-        rgb(107, 0, 62) 100%
-      );
-      --wp--preset--gradient--luminous-dusk: linear-gradient(
-        135deg,
-        rgb(255, 203, 112) 0%,
-        rgb(199, 81, 192) 50%,
-        rgb(65, 88, 208) 100%
-      );
-      --wp--preset--gradient--pale-ocean: linear-gradient(
-        135deg,
-        rgb(255, 245, 203) 0%,
-        rgb(182, 227, 212) 50%,
-        rgb(51, 167, 181) 100%
-      );
-      --wp--preset--gradient--electric-grass: linear-gradient(
-        135deg,
-        rgb(202, 248, 128) 0%,
-        rgb(113, 206, 126) 100%
-      );
-      --wp--preset--gradient--midnight: linear-gradient(
-        135deg,
-        rgb(2, 3, 129) 0%,
-        rgb(40, 116, 252) 100%
-      );
-      --wp--preset--duotone--dark-grayscale: url('index.html');
-      --wp--preset--duotone--grayscale: url('index.html');
-      --wp--preset--duotone--purple-yellow: url('index.html');
-      --wp--preset--duotone--blue-red: url('index.html');
-      --wp--preset--duotone--midnight: url('index.html');
-      --wp--preset--duotone--magenta-yellow: url('index.html');
-      --wp--preset--duotone--purple-green: url('index.html');
-      --wp--preset--duotone--blue-orange: url('index.html');
-      --wp--preset--font-size--small: 13px;
-      --wp--preset--font-size--medium: 20px;
-      --wp--preset--font-size--large: 36px;
-      --wp--preset--font-size--x-large: 42px;
-      --wp--preset--spacing--20: 0.44rem;
-      --wp--preset--spacing--30: 0.67rem;
-      --wp--preset--spacing--40: 1rem;
-      --wp--preset--spacing--50: 1.5rem;
-      --wp--preset--spacing--60: 2.25rem;
-      --wp--preset--spacing--70: 3.38rem;
-      --wp--preset--spacing--80: 5.06rem;
-      --wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);
-      --wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);
-      --wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);
-      --wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1),
-        6px 6px rgba(0, 0, 0, 1);
-      --wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);
-    }
-    :where(.is-layout-flex) {
-      gap: 0.5em;
-    }
-    body .is-layout-flow > .alignleft {
-      float: left;
-      margin-inline-start: 0;
-      margin-inline-end: 2em;
-    }
-    body .is-layout-flow > .alignright {
-      float: right;
-      margin-inline-start: 2em;
-      margin-inline-end: 0;
-    }
-    body .is-layout-flow > .aligncenter {
-      margin-left: auto !important;
-      margin-right: auto !important;
-    }
-    body .is-layout-constrained > .alignleft {
-      float: left;
-      margin-inline-start: 0;
-      margin-inline-end: 2em;
-    }
-    body .is-layout-constrained > .alignright {
-      float: right;
-      margin-inline-start: 2em;
-      margin-inline-end: 0;
-    }
-    body .is-layout-constrained > .aligncenter {
-      margin-left: auto !important;
-      margin-right: auto !important;
-    }
-    body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
-      max-width: var(--wp--style--global--content-size);
-      margin-left: auto !important;
-      margin-right: auto !important;
-    }
-    body .is-layout-constrained > .alignwide {
-      max-width: var(--wp--style--global--wide-size);
-    }
-    body .is-layout-flex {
-      display: flex;
-    }
-    body .is-layout-flex {
-      flex-wrap: wrap;
-      align-items: center;
-    }
-    body .is-layout-flex > * {
-      margin: 0;
-    }
-    :where(.wp-block-columns.is-layout-flex) {
-      gap: 2em;
-    }
-    .has-black-color {
-      color: var(--wp--preset--color--black) !important;
-    }
-    .has-cyan-bluish-gray-color {
-      color: var(--wp--preset--color--cyan-bluish-gray) !important;
-    }
-    .has-white-color {
-      color: var(--wp--preset--color--white) !important;
-    }
-    .has-pale-pink-color {
-      color: var(--wp--preset--color--pale-pink) !important;
-    }
-    .has-vivid-red-color {
-      color: var(--wp--preset--color--vivid-red) !important;
-    }
-    .has-luminous-vivid-orange-color {
-      color: var(--wp--preset--color--luminous-vivid-orange) !important;
-    }
-    .has-luminous-vivid-amber-color {
-      color: var(--wp--preset--color--luminous-vivid-amber) !important;
-    }
-    .has-light-green-cyan-color {
-      color: var(--wp--preset--color--light-green-cyan) !important;
-    }
-    .has-vivid-green-cyan-color {
-      color: var(--wp--preset--color--vivid-green-cyan) !important;
-    }
-    .has-pale-cyan-blue-color {
-      color: var(--wp--preset--color--pale-cyan-blue) !important;
-    }
-    .has-vivid-cyan-blue-color {
-      color: var(--wp--preset--color--vivid-cyan-blue) !important;
-    }
-    .has-vivid-purple-color {
-      color: var(--wp--preset--color--vivid-purple) !important;
-    }
-    .has-black-background-color {
-      background-color: var(--wp--preset--color--black) !important;
-    }
-    .has-cyan-bluish-gray-background-color {
-      background-color: var(--wp--preset--color--cyan-bluish-gray) !important;
-    }
-    .has-white-background-color {
-      background-color: var(--wp--preset--color--white) !important;
-    }
-    .has-pale-pink-background-color {
-      background-color: var(--wp--preset--color--pale-pink) !important;
-    }
-    .has-vivid-red-background-color {
-      background-color: var(--wp--preset--color--vivid-red) !important;
-    }
-    .has-luminous-vivid-orange-background-color {
-      background-color: var(--wp--preset--color--luminous-vivid-orange) !important;
-    }
-    .has-luminous-vivid-amber-background-color {
-      background-color: var(--wp--preset--color--luminous-vivid-amber) !important;
-    }
-    .has-light-green-cyan-background-color {
-      background-color: var(--wp--preset--color--light-green-cyan) !important;
-    }
-    .has-vivid-green-cyan-background-color {
-      background-color: var(--wp--preset--color--vivid-green-cyan) !important;
-    }
-    .has-pale-cyan-blue-background-color {
-      background-color: var(--wp--preset--color--pale-cyan-blue) !important;
-    }
-    .has-vivid-cyan-blue-background-color {
-      background-color: var(--wp--preset--color--vivid-cyan-blue) !important;
-    }
-    .has-vivid-purple-background-color {
-      background-color: var(--wp--preset--color--vivid-purple) !important;
-    }
-    .has-black-border-color {
-      border-color: var(--wp--preset--color--black) !important;
-    }
-    .has-cyan-bluish-gray-border-color {
-      border-color: var(--wp--preset--color--cyan-bluish-gray) !important;
-    }
-    .has-white-border-color {
-      border-color: var(--wp--preset--color--white) !important;
-    }
-    .has-pale-pink-border-color {
-      border-color: var(--wp--preset--color--pale-pink) !important;
-    }
-    .has-vivid-red-border-color {
-      border-color: var(--wp--preset--color--vivid-red) !important;
-    }
-    .has-luminous-vivid-orange-border-color {
-      border-color: var(--wp--preset--color--luminous-vivid-orange) !important;
-    }
-    .has-luminous-vivid-amber-border-color {
-      border-color: var(--wp--preset--color--luminous-vivid-amber) !important;
-    }
-    .has-light-green-cyan-border-color {
-      border-color: var(--wp--preset--color--light-green-cyan) !important;
-    }
-    .has-vivid-green-cyan-border-color {
-      border-color: var(--wp--preset--color--vivid-green-cyan) !important;
-    }
-    .has-pale-cyan-blue-border-color {
-      border-color: var(--wp--preset--color--pale-cyan-blue) !important;
-    }
-    .has-vivid-cyan-blue-border-color {
-      border-color: var(--wp--preset--color--vivid-cyan-blue) !important;
-    }
-    .has-vivid-purple-border-color {
-      border-color: var(--wp--preset--color--vivid-purple) !important;
-    }
-    .has-vivid-cyan-blue-to-vivid-purple-gradient-background {
-      background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;
-    }
-    .has-light-green-cyan-to-vivid-green-cyan-gradient-background {
-      background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;
-    }
-    .has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background {
-      background: var(
-        --wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange
-      ) !important;
-    }
-    .has-luminous-vivid-orange-to-vivid-red-gradient-background {
-      background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;
-    }
-    .has-very-light-gray-to-cyan-bluish-gray-gradient-background {
-      background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;
-    }
-    .has-cool-to-warm-spectrum-gradient-background {
-      background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;
-    }
-    .has-blush-light-purple-gradient-background {
-      background: var(--wp--preset--gradient--blush-light-purple) !important;
-    }
-    .has-blush-bordeaux-gradient-background {
-      background: var(--wp--preset--gradient--blush-bordeaux) !important;
-    }
-    .has-luminous-dusk-gradient-background {
-      background: var(--wp--preset--gradient--luminous-dusk) !important;
-    }
-    .has-pale-ocean-gradient-background {
-      background: var(--wp--preset--gradient--pale-ocean) !important;
-    }
-    .has-electric-grass-gradient-background {
-      background: var(--wp--preset--gradient--electric-grass) !important;
-    }
-    .has-midnight-gradient-background {
-      background: var(--wp--preset--gradient--midnight) !important;
-    }
-    .has-small-font-size {
-      font-size: var(--wp--preset--font-size--small) !important;
-    }
-    .has-medium-font-size {
-      font-size: var(--wp--preset--font-size--medium) !important;
-    }
-    .has-large-font-size {
-      font-size: var(--wp--preset--font-size--large) !important;
-    }
-    .has-x-large-font-size {
-      font-size: var(--wp--preset--font-size--x-large) !important;
-    }
-    .wp-block-navigation a:where(:not(.wp-element-button)) {
-      color: inherit;
-    }
-    :where(.wp-block-columns.is-layout-flex) {
-      gap: 2em;
-    }
-    .wp-block-pullquote {
-      font-size: 1.5em;
-      line-height: 1.6;
-    }
-  </style>
-  <link
-    rel="stylesheet"
-    id="animate-css"
-    href="wp-content/themes/quiz/assets/css/animate.css%3Fver=6.2.css"
-    type="text/css"
-    media="all"
-  />
-  <script
-    type="text/javascript"
-    src="wp-content/themes/quiz/assets/js/jquery-1.11.0.js%3Fver=6.2"
-    id="jquery-min-js"
-  ></script>
-  <script
-    type="text/javascript"
-    src="wp-content/themes/quiz/assets/js/jquery.mask.min.js%3Fver=6.2"
-    id="jquery-msk-js"
-  ></script>
-  <script
-    type="text/javascript"
-    src="wp-content/themes/quiz/assets/js/slick.js%3Fver=6.2"
-    id="slick-js"
-  ></script>
-  <script
-    type="text/javascript"
-    src="wp-content/themes/quiz/assets/js/wow.min.js%3Fver=6.2"
-    id="wow-js"
-  ></script>
-  <script type="text/javascript" id="main-script-js-extra">
-    var myajax = {
-      url: 'https:\/\/socialcredit.goldinvest.com.ua\/wp-admin\/admin-ajax.php',
-      id: '4083',
-      'page-url': 'https:\/\/socialcredit.goldinvest.com.ua\/'
-    };
-  </script>
-  <script
-    type="text/javascript"
-    src="wp-content/themes/quiz/assets/js/main.js%3Fver=6.2"
-    id="main-script-js"
-  ></script>
-  <noscript
-    ><style>
-      .lazyload[data-src] {
-        display: none !important;
+    <!-- This site is optimized with the Yoast SEO plugin v18.2 - https://yoast.com/wordpress/plugins/seo/ -->
+    <title>Кредит під заставу нерухомості в Києві та області</title>
+    <meta
+      name="description"
+      content="Вирішіть свої фінансові завдання гарантовано, отримавши термінову позику за допомогою ЦЕНТРУ СОЦІАЛЬНОГО КРЕДИТУВАННЯ"
+    />
+    <link rel="canonical" href="https://socialcredit.kiev.ua/" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Кредит під заставу нерухомості в Києві та області"
+    />
+    <meta
+      property="og:description"
+      content="Вирішіть свої фінансові завдання гарантовано, отримавши термінову позику за допомогою ЦЕНТРУ СОЦІАЛЬНОГО КРЕДИТУВАННЯ"
+    />
+    <meta property="og:url" content="https://socialcredit.kiev.ua/" />
+    <meta
+      property="og:site_name"
+      content="Готівка під заставу нерухомості в Києві та області."
+    />
+    <meta
+      property="article:modified_time"
+      content="2023-10-14T10:08:13+00:00"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json" class="yoast-schema-graph">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://socialcredit.kiev.ua/#website",
+            "url": "https://socialcredit.kiev.ua/",
+            "name": "Готівка під заставу нерухомості в Києві та області.",
+            "description": "Отримайте гроші під заставу без підтвердження прибутків у день звернення",
+            "potentialAction": [
+              {
+                "@type": "SearchAction",
+                "target": {
+                  "@type": "EntryPoint",
+                  "urlTemplate": "https://socialcredit.kiev.ua/?s={search_term_string}"
+                },
+                "query-input": "required name=search_term_string"
+              }
+            ],
+            "inLanguage": "ru-RU"
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://socialcredit.kiev.ua/#webpage",
+            "url": "https://socialcredit.kiev.ua/",
+            "name": "Кредит під заставу нерухомості в Києві та області",
+            "isPartOf": { "@id": "https://socialcredit.kiev.ua/#website" },
+            "datePublished": "2022-08-22T06:05:35+00:00",
+            "dateModified": "2023-10-14T10:08:13+00:00",
+            "description": "Вирішіть свої фінансові завдання гарантовано, отримавши термінову позику за допомогою ЦЕНТРУ СОЦІАЛЬНОГО КРЕДИТУВАННЯ",
+            "breadcrumb": { "@id": "https://socialcredit.kiev.ua/#breadcrumb" },
+            "inLanguage": "ru-RU",
+            "potentialAction": [
+              {
+                "@type": "ReadAction",
+                "target": ["https://socialcredit.kiev.ua/"]
+              }
+            ]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://socialcredit.kiev.ua/#breadcrumb",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home" }
+            ]
+          }
+        ]
       }
-    </style></noscript
-  ><style>
-    .lazyload {
-      background-image: none !important;
-    }
-    .lazyload:before {
-      background-image: none !important;
-    }</style
-  ><style>
-    .wp-block-gallery.is-cropped .blocks-gallery-item picture {
-      height: 100%;
-      width: 100%;
-    }</style
-  ><noscript
-    ><style id="rocket-lazyload-nojs-css">
-      .rll-youtube-player,
-      [data-lazy-src] {
-        display: none !important;
+    </script>
+    <!-- / Yoast SEO plugin. -->
+
+    <link
+      rel="stylesheet"
+      id="classic-theme-styles-css"
+      href="wp-includes/css/classic-themes.min.css%3Fver=6.2.css"
+      type="text/css"
+      media="all"
+    />
+    <style id="global-styles-inline-css" type="text/css">
+      body {
+        --wp--preset--color--black: #000000;
+        --wp--preset--color--cyan-bluish-gray: #abb8c3;
+        --wp--preset--color--white: #ffffff;
+        --wp--preset--color--pale-pink: #f78da7;
+        --wp--preset--color--vivid-red: #cf2e2e;
+        --wp--preset--color--luminous-vivid-orange: #ff6900;
+        --wp--preset--color--luminous-vivid-amber: #fcb900;
+        --wp--preset--color--light-green-cyan: #7bdcb5;
+        --wp--preset--color--vivid-green-cyan: #00d084;
+        --wp--preset--color--pale-cyan-blue: #8ed1fc;
+        --wp--preset--color--vivid-cyan-blue: #0693e3;
+        --wp--preset--color--vivid-purple: #9b51e0;
+        --wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(
+          135deg,
+          rgba(6, 147, 227, 1) 0%,
+          rgb(155, 81, 224) 100%
+        );
+        --wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(
+          135deg,
+          rgb(122, 220, 180) 0%,
+          rgb(0, 208, 130) 100%
+        );
+        --wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(
+          135deg,
+          rgba(252, 185, 0, 1) 0%,
+          rgba(255, 105, 0, 1) 100%
+        );
+        --wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(
+          135deg,
+          rgba(255, 105, 0, 1) 0%,
+          rgb(207, 46, 46) 100%
+        );
+        --wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(
+          135deg,
+          rgb(238, 238, 238) 0%,
+          rgb(169, 184, 195) 100%
+        );
+        --wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(
+          135deg,
+          rgb(74, 234, 220) 0%,
+          rgb(151, 120, 209) 20%,
+          rgb(207, 42, 186) 40%,
+          rgb(238, 44, 130) 60%,
+          rgb(251, 105, 98) 80%,
+          rgb(254, 248, 76) 100%
+        );
+        --wp--preset--gradient--blush-light-purple: linear-gradient(
+          135deg,
+          rgb(255, 206, 236) 0%,
+          rgb(152, 150, 240) 100%
+        );
+        --wp--preset--gradient--blush-bordeaux: linear-gradient(
+          135deg,
+          rgb(254, 205, 165) 0%,
+          rgb(254, 45, 45) 50%,
+          rgb(107, 0, 62) 100%
+        );
+        --wp--preset--gradient--luminous-dusk: linear-gradient(
+          135deg,
+          rgb(255, 203, 112) 0%,
+          rgb(199, 81, 192) 50%,
+          rgb(65, 88, 208) 100%
+        );
+        --wp--preset--gradient--pale-ocean: linear-gradient(
+          135deg,
+          rgb(255, 245, 203) 0%,
+          rgb(182, 227, 212) 50%,
+          rgb(51, 167, 181) 100%
+        );
+        --wp--preset--gradient--electric-grass: linear-gradient(
+          135deg,
+          rgb(202, 248, 128) 0%,
+          rgb(113, 206, 126) 100%
+        );
+        --wp--preset--gradient--midnight: linear-gradient(
+          135deg,
+          rgb(2, 3, 129) 0%,
+          rgb(40, 116, 252) 100%
+        );
+        --wp--preset--duotone--dark-grayscale: url("index.html");
+        --wp--preset--duotone--grayscale: url("index.html");
+        --wp--preset--duotone--purple-yellow: url("index.html");
+        --wp--preset--duotone--blue-red: url("index.html");
+        --wp--preset--duotone--midnight: url("index.html");
+        --wp--preset--duotone--magenta-yellow: url("index.html");
+        --wp--preset--duotone--purple-green: url("index.html");
+        --wp--preset--duotone--blue-orange: url("index.html");
+        --wp--preset--font-size--small: 13px;
+        --wp--preset--font-size--medium: 20px;
+        --wp--preset--font-size--large: 36px;
+        --wp--preset--font-size--x-large: 42px;
+        --wp--preset--spacing--20: 0.44rem;
+        --wp--preset--spacing--30: 0.67rem;
+        --wp--preset--spacing--40: 1rem;
+        --wp--preset--spacing--50: 1.5rem;
+        --wp--preset--spacing--60: 2.25rem;
+        --wp--preset--spacing--70: 3.38rem;
+        --wp--preset--spacing--80: 5.06rem;
+        --wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);
+        --wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);
+        --wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);
+        --wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1),
+          6px 6px rgba(0, 0, 0, 1);
+        --wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);
       }
-    </style></noscript
-  ><head>
+      :where(.is-layout-flex) {
+        gap: 0.5em;
+      }
+      body .is-layout-flow > .alignleft {
+        float: left;
+        margin-inline-start: 0;
+        margin-inline-end: 2em;
+      }
+      body .is-layout-flow > .alignright {
+        float: right;
+        margin-inline-start: 2em;
+        margin-inline-end: 0;
+      }
+      body .is-layout-flow > .aligncenter {
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+      body .is-layout-constrained > .alignleft {
+        float: left;
+        margin-inline-start: 0;
+        margin-inline-end: 2em;
+      }
+      body .is-layout-constrained > .alignright {
+        float: right;
+        margin-inline-start: 2em;
+        margin-inline-end: 0;
+      }
+      body .is-layout-constrained > .aligncenter {
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+      body
+        .is-layout-constrained
+        > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+        max-width: var(--wp--style--global--content-size);
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+      body .is-layout-constrained > .alignwide {
+        max-width: var(--wp--style--global--wide-size);
+      }
+      body .is-layout-flex {
+        display: flex;
+      }
+      body .is-layout-flex {
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      body .is-layout-flex > * {
+        margin: 0;
+      }
+      :where(.wp-block-columns.is-layout-flex) {
+        gap: 2em;
+      }
+      .has-black-color {
+        color: var(--wp--preset--color--black) !important;
+      }
+      .has-cyan-bluish-gray-color {
+        color: var(--wp--preset--color--cyan-bluish-gray) !important;
+      }
+      .has-white-color {
+        color: var(--wp--preset--color--white) !important;
+      }
+      .has-pale-pink-color {
+        color: var(--wp--preset--color--pale-pink) !important;
+      }
+      .has-vivid-red-color {
+        color: var(--wp--preset--color--vivid-red) !important;
+      }
+      .has-luminous-vivid-orange-color {
+        color: var(--wp--preset--color--luminous-vivid-orange) !important;
+      }
+      .has-luminous-vivid-amber-color {
+        color: var(--wp--preset--color--luminous-vivid-amber) !important;
+      }
+      .has-light-green-cyan-color {
+        color: var(--wp--preset--color--light-green-cyan) !important;
+      }
+      .has-vivid-green-cyan-color {
+        color: var(--wp--preset--color--vivid-green-cyan) !important;
+      }
+      .has-pale-cyan-blue-color {
+        color: var(--wp--preset--color--pale-cyan-blue) !important;
+      }
+      .has-vivid-cyan-blue-color {
+        color: var(--wp--preset--color--vivid-cyan-blue) !important;
+      }
+      .has-vivid-purple-color {
+        color: var(--wp--preset--color--vivid-purple) !important;
+      }
+      .has-black-background-color {
+        background-color: var(--wp--preset--color--black) !important;
+      }
+      .has-cyan-bluish-gray-background-color {
+        background-color: var(--wp--preset--color--cyan-bluish-gray) !important;
+      }
+      .has-white-background-color {
+        background-color: var(--wp--preset--color--white) !important;
+      }
+      .has-pale-pink-background-color {
+        background-color: var(--wp--preset--color--pale-pink) !important;
+      }
+      .has-vivid-red-background-color {
+        background-color: var(--wp--preset--color--vivid-red) !important;
+      }
+      .has-luminous-vivid-orange-background-color {
+        background-color: var(
+          --wp--preset--color--luminous-vivid-orange
+        ) !important;
+      }
+      .has-luminous-vivid-amber-background-color {
+        background-color: var(
+          --wp--preset--color--luminous-vivid-amber
+        ) !important;
+      }
+      .has-light-green-cyan-background-color {
+        background-color: var(--wp--preset--color--light-green-cyan) !important;
+      }
+      .has-vivid-green-cyan-background-color {
+        background-color: var(--wp--preset--color--vivid-green-cyan) !important;
+      }
+      .has-pale-cyan-blue-background-color {
+        background-color: var(--wp--preset--color--pale-cyan-blue) !important;
+      }
+      .has-vivid-cyan-blue-background-color {
+        background-color: var(--wp--preset--color--vivid-cyan-blue) !important;
+      }
+      .has-vivid-purple-background-color {
+        background-color: var(--wp--preset--color--vivid-purple) !important;
+      }
+      .has-black-border-color {
+        border-color: var(--wp--preset--color--black) !important;
+      }
+      .has-cyan-bluish-gray-border-color {
+        border-color: var(--wp--preset--color--cyan-bluish-gray) !important;
+      }
+      .has-white-border-color {
+        border-color: var(--wp--preset--color--white) !important;
+      }
+      .has-pale-pink-border-color {
+        border-color: var(--wp--preset--color--pale-pink) !important;
+      }
+      .has-vivid-red-border-color {
+        border-color: var(--wp--preset--color--vivid-red) !important;
+      }
+      .has-luminous-vivid-orange-border-color {
+        border-color: var(
+          --wp--preset--color--luminous-vivid-orange
+        ) !important;
+      }
+      .has-luminous-vivid-amber-border-color {
+        border-color: var(--wp--preset--color--luminous-vivid-amber) !important;
+      }
+      .has-light-green-cyan-border-color {
+        border-color: var(--wp--preset--color--light-green-cyan) !important;
+      }
+      .has-vivid-green-cyan-border-color {
+        border-color: var(--wp--preset--color--vivid-green-cyan) !important;
+      }
+      .has-pale-cyan-blue-border-color {
+        border-color: var(--wp--preset--color--pale-cyan-blue) !important;
+      }
+      .has-vivid-cyan-blue-border-color {
+        border-color: var(--wp--preset--color--vivid-cyan-blue) !important;
+      }
+      .has-vivid-purple-border-color {
+        border-color: var(--wp--preset--color--vivid-purple) !important;
+      }
+      .has-vivid-cyan-blue-to-vivid-purple-gradient-background {
+        background: var(
+          --wp--preset--gradient--vivid-cyan-blue-to-vivid-purple
+        ) !important;
+      }
+      .has-light-green-cyan-to-vivid-green-cyan-gradient-background {
+        background: var(
+          --wp--preset--gradient--light-green-cyan-to-vivid-green-cyan
+        ) !important;
+      }
+      .has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background {
+        background: var(
+          --wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange
+        ) !important;
+      }
+      .has-luminous-vivid-orange-to-vivid-red-gradient-background {
+        background: var(
+          --wp--preset--gradient--luminous-vivid-orange-to-vivid-red
+        ) !important;
+      }
+      .has-very-light-gray-to-cyan-bluish-gray-gradient-background {
+        background: var(
+          --wp--preset--gradient--very-light-gray-to-cyan-bluish-gray
+        ) !important;
+      }
+      .has-cool-to-warm-spectrum-gradient-background {
+        background: var(
+          --wp--preset--gradient--cool-to-warm-spectrum
+        ) !important;
+      }
+      .has-blush-light-purple-gradient-background {
+        background: var(--wp--preset--gradient--blush-light-purple) !important;
+      }
+      .has-blush-bordeaux-gradient-background {
+        background: var(--wp--preset--gradient--blush-bordeaux) !important;
+      }
+      .has-luminous-dusk-gradient-background {
+        background: var(--wp--preset--gradient--luminous-dusk) !important;
+      }
+      .has-pale-ocean-gradient-background {
+        background: var(--wp--preset--gradient--pale-ocean) !important;
+      }
+      .has-electric-grass-gradient-background {
+        background: var(--wp--preset--gradient--electric-grass) !important;
+      }
+      .has-midnight-gradient-background {
+        background: var(--wp--preset--gradient--midnight) !important;
+      }
+      .has-small-font-size {
+        font-size: var(--wp--preset--font-size--small) !important;
+      }
+      .has-medium-font-size {
+        font-size: var(--wp--preset--font-size--medium) !important;
+      }
+      .has-large-font-size {
+        font-size: var(--wp--preset--font-size--large) !important;
+      }
+      .has-x-large-font-size {
+        font-size: var(--wp--preset--font-size--x-large) !important;
+      }
+      .wp-block-navigation a:where(:not(.wp-element-button)) {
+        color: inherit;
+      }
+      :where(.wp-block-columns.is-layout-flex) {
+        gap: 2em;
+      }
+      .wp-block-pullquote {
+        font-size: 1.5em;
+        line-height: 1.6;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      id="animate-css"
+      href="wp-content/themes/quiz/assets/css/animate.css%3Fver=6.2.css"
+      type="text/css"
+      media="all"
+    />
+    <script
+      type="text/javascript"
+      src="wp-content/themes/quiz/assets/js/jquery-1.11.0.js%3Fver=6.2"
+      id="jquery-min-js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="wp-content/themes/quiz/assets/js/jquery.mask.min.js%3Fver=6.2"
+      id="jquery-msk-js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="wp-content/themes/quiz/assets/js/slick.js%3Fver=6.2"
+      id="slick-js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="wp-content/themes/quiz/assets/js/wow.min.js%3Fver=6.2"
+      id="wow-js"
+    ></script>
+    <script type="text/javascript" id="main-script-js-extra">
+      var myajax = {
+        url: "https:\/\/socialcredit.goldinvest.com.ua\/wp-admin\/admin-ajax.php",
+        id: "4083",
+        "page-url": "https:\/\/socialcredit.goldinvest.com.ua\/",
+      };
+    </script>
+    <script
+      type="text/javascript"
+      src="wp-content/themes/quiz/assets/js/main.js%3Fver=6.2"
+      id="main-script-js"
+    ></script>
+    <noscript
+      ><style>
+        .lazyload[data-src] {
+          display: none !important;
+        }
+      </style></noscript
+    >
+    <style>
+      .lazyload {
+        background-image: none !important;
+      }
+      .lazyload:before {
+        background-image: none !important;
+      }
+    </style>
+    <style>
+      .wp-block-gallery.is-cropped .blocks-gallery-item picture {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+    <noscript
+      ><style id="rocket-lazyload-nojs-css">
+        .rll-youtube-player,
+        [data-lazy-src] {
+          display: none !important;
+        }
+      </style></noscript
+    >
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
-    <script data-cfasync="false" data-no-defer="1" data-no-minify="1" data-no-optimize="1">
-      if (typeof ewww_webp_supported === 'undefined') {
+    <script
+      data-cfasync="false"
+      data-no-defer="1"
+      data-no-minify="1"
+      data-no-optimize="1"
+    >
+      if (typeof ewww_webp_supported === "undefined") {
         var ewww_webp_supported = !1;
       }
       if (ewww_webp_supported) {
-        document.body.classList.add('webp-support');
+        document.body.classList.add("webp-support");
       }
     </script>
 
@@ -947,7 +1153,7 @@
         --light-font: #585858;
         --dark-font: #262626;
 
-        --font-family: 'Raleway', 'sans-serif';
+        --font-family: "Raleway", "sans-serif";
         --transition: 0.3s all;
         --grad-from: #4aa3e2;
         --grad-to: #1d00ff;
@@ -958,13 +1164,12 @@
 
       .first-screen__bg::after {
         position: absolute;
-        content: '';
+        content: "";
         height: 100%;
         width: 100%;
         top: 0;
         left: 0;
-        background-image:
-          -webkit-gradient(
+        background-image: -webkit-gradient(
             linear,
             left top,
             right top,
@@ -974,15 +1179,15 @@
             to(rgba(var(--transparent)))
           ),
           -webkit-gradient(linear, left bottom, left top, from(var(--bg-color)), color-stop(30%, rgba(var(--transparent))), to(rgba(var(--transparent))));
-        background-image:
-          -o-linear-gradient(
+        background-image: -o-linear-gradient(
             left,
             var(--bg-color),
             var(--bg-color) 30%,
             rgba(var(--transparent)) 70%,
             rgba(var(--transparent))
           ),
-          -o-linear-gradient(bottom, var(--bg-color), rgba(var(--transparent)) 30%, rgba(var(--transparent)));
+          -o-linear-gradient(bottom, var(--bg-color), rgba(var(--transparent))
+                30%, rgba(var(--transparent)));
         background-image: linear-gradient(
             to right,
             var(--bg-color),
@@ -1034,7 +1239,9 @@
     <section class="first-screen">
       <div class="first-screen__bg">
         <picture
-          ><source srcset="wp-content/uploads/2023/02/f3w3.jpg.webp" type="image/webp" />
+          ><source
+            srcset="wp-content/uploads/2023/02/f3w3.jpg.webp"
+            type="image/webp" />
           <img
             src="wp-content/uploads/2023/02/f3w3.jpg"
             alt=""
@@ -1064,8 +1271,9 @@
               /></noscript>
             </a>
             <div class="logo__desc" style="color: #3d3d3d">
-              Найпростіші та найвигідніші <a href="https://goldinvest.com.ua/">рішення</a>для
-              мешканців України!
+              Найпростіші та найвигідніші
+              <a href="https://goldinvest.com.ua/">рішення</a>для мешканців
+              України!
             </div>
           </div>
 
@@ -1110,7 +1318,11 @@
                 відповіді: 13 секунд
               </div>
             </div>
-            <a href="viber://chat?number=380674440595" target="_blank" class="header__wa-m">
+            <a
+              href="viber://chat?number=380674440595"
+              target="_blank"
+              class="header__wa-m"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="48"
@@ -1145,7 +1357,11 @@
               <a href="tel:" class="header__phone__link" style="color: #0a0000"
                 >+38 (067) 444 05 95</a
               >
-              <a href="tel:" class="header__phone__link" style="color: #0a0000"></a>
+              <a
+                href="tel:"
+                class="header__phone__link"
+                style="color: #0a0000"
+              ></a>
 
               <button
                 class="header__callback"
@@ -5291,17 +5507,23 @@
       </style>
       <div class="main container">
         <div class="main__info">
-          <div class="main__subtitle wow fadeInUp" style="background-color: #47b0e5">
+          <div
+            class="main__subtitle wow fadeInUp"
+            style="background-color: #47b0e5"
+          >
             <span class="main__subtitle--skew" style="color: #ffffff">
               Потрібна більша сума грошей?
             </span>
           </div>
           <h1 class="main__title wow fadeInUp" style="color: #000000">
-            <span class="fw-bold">Кредит під заставу нерухомості</span> у Києві та області
+            <span class="fw-bold">Кредит під заставу нерухомості</span> у Києві
+            та області
           </h1>
 
           <h3 class="main__title rfv" style="color: #000000">
-            <span class="fw-bold">***БЕЗ підтвердження доходів, без довідок та поручителів</span>
+            <span class="fw-bold"
+              >***БЕЗ підтвердження доходів, без довідок та поручителів</span
+            >
           </h3>
 
           <div class="main__advantages">
@@ -5403,7 +5625,10 @@
             </div>
           </div>
 
-          <h3 class="main__title" style="font-size: 1.9rem; color: #ffffff"></h3>
+          <h3
+            class="main__title"
+            style="font-size: 1.9rem; color: #ffffff"
+          ></h3>
 
           <div class="main__btn-wrap">
             <button
@@ -5414,9 +5639,9 @@
               style="border-radius: 10rem"
             >
               <span>
-                <span class="main__btn__text" style="color:">
-                  <img src="index.html" style="max-width: 2.3rem" alt="" /> &nbsp;&nbsp;РОЗРАХУВАТИ
-                  СУМУ ПОЗИКИ
+                <span class="main__btn__text" style="color: ">
+                  <img src="index.html" style="max-width: 2.3rem" alt="" />
+                  &nbsp;&nbsp;РОЗРАХУВАТИ СУМУ ПОЗИКИ
                 </span>
               </span>
             </button>
@@ -5449,11 +5674,15 @@
       </div>
     </section>
 
-    <div class="open-quiz" id="quiz_content" style="position: relative; z-index: 3">
+    <div
+      class="open-quiz"
+      id="quiz_content"
+      style="position: relative; z-index: 3"
+    >
       <h2 class="portfolio__title text-center">
         За 1 хвилину отримаєте
-        <span class="fw-bold">попереднє <br />схвалення отримання</span> потрібної суми грошей
-        <br />відповівши на 5 питань
+        <span class="fw-bold">попереднє <br />схвалення отримання</span>
+        потрібної суми грошей <br />відповівши на 5 питань
       </h2>
       <form id="quiz_block" class="quiz container">
         <input type="hidden" name="action" value="quiz" />
@@ -5471,11 +5700,21 @@
 
         <div class="close"></div>
 
-        <div class="quiz__main" style="border-radius: 1rem; background: #ffffff">
+        <div
+          class="quiz__main"
+          style="border-radius: 1rem; background: #ffffff"
+        >
           <div class="quiz__bar" style="border-radius: 1rem">
-            <div class="quiz__bar__prg" id="quiz-bar-prg" style="border-radius: 1rem"></div>
+            <div
+              class="quiz__bar__prg"
+              id="quiz-bar-prg"
+              style="border-radius: 1rem"
+            ></div>
             <div class="quiz__bar__text">
-              Расчет <span class="fw-medium">пройден на <span id="quiz-percent">10</span>%</span>
+              Расчет
+              <span class="fw-medium"
+                >пройден на <span id="quiz-percent">10</span>%</span
+              >
             </div>
           </div>
           <div
@@ -5495,7 +5734,9 @@
               <div class="quiz__question__progress">
                 Вопрос <span class="q_num" id="num_1">1</span>
               </div>
-              <div class="quiz__question__title">Виберіть тип нерухомості під заставу</div>
+              <div class="quiz__question__title">
+                Виберіть тип нерухомості під заставу
+              </div>
             </div>
 
             <div class="quiz__answers quiz__answers--img">
@@ -5682,7 +5923,7 @@
                   type="button"
                   class="btn quiz__btn-next"
                   disabled
-                  style="color:; border-radius: 10rem"
+                  style="color: ; border-radius: 10rem"
                   data-next=""
                   data-nextperc=""
                 >
@@ -5708,7 +5949,10 @@
               Дайте відповідь на кілька питань щоб розрахувати суму позики
             </div>
             <div class="quiz__question__head">
-              <div class="quiz__question__progress" style="border-radius: 1rem; color:">
+              <div
+                class="quiz__question__progress"
+                style="border-radius: 1rem; color: "
+              >
                 Вопрос <span class="q_num" id="num_2">1</span>
               </div>
               <div class="quiz__question__title">
@@ -5745,9 +5989,15 @@
                   </div>
                 </div>
                 <label class="quiz__final__agreement" style="font-size: 1rem">
-                  <input type="checkbox" name="agreement" class="visually-hidden" />
+                  <input
+                    type="checkbox"
+                    name="agreement"
+                    class="visually-hidden"
+                  />
                   <div class="quiz__final__agreement__check"></div>
-                  <div class="quiz__final__agreement__text">Не хочу відповідати</div>
+                  <div class="quiz__final__agreement__text">
+                    Не хочу відповідати
+                  </div>
                 </label>
               </div>
               <div class="quiz__answers__img">
@@ -5756,7 +6006,11 @@
             </div>
 
             <div class="quiz__buttons">
-              <button type="button" class="quiz__btn-prev" style="border-radius: 10rem">
+              <button
+                type="button"
+                class="quiz__btn-prev"
+                style="border-radius: 10rem"
+              >
                 <span> Назад </span>
               </button>
               <div class="quiz__btn-next__wrap">
@@ -5764,7 +6018,7 @@
                   type="button"
                   class="btn quiz__btn-next"
                   disabled
-                  style="color:; border-radius: 10rem"
+                  style="color: ; border-radius: 10rem"
                   data-next="3"
                   data-nextperc="40"
                 >
@@ -5790,7 +6044,10 @@
               Дайте відповідь на кілька питань щоб розрахувати суму позики
             </div>
             <div class="quiz__question__head">
-              <div class="quiz__question__progress" style="border-radius: 1rem; color:">
+              <div
+                class="quiz__question__progress"
+                style="border-radius: 1rem; color: "
+              >
                 Вопрос <span class="q_num" id="num_3">1</span>
               </div>
               <div class="quiz__question__title">Яка сума вас цікавить?</div>
@@ -5808,7 +6065,9 @@
                       data-next="4"
                       data-perc="60"
                     />
-                    <p style="border-radius: 10rem">до 100 тис. грн (за 1 годину)</p>
+                    <p style="border-radius: 10rem">
+                      до 100 тис. грн (за 1 годину)
+                    </p>
                   </label>
                 </div>
                 <div class="quiz__answer--txt__wrap">
@@ -5861,7 +6120,11 @@
             </div>
 
             <div class="quiz__buttons">
-              <button type="button" class="quiz__btn-prev" style="border-radius: 10rem">
+              <button
+                type="button"
+                class="quiz__btn-prev"
+                style="border-radius: 10rem"
+              >
                 <span> Назад </span>
               </button>
               <div class="quiz__btn-next__wrap">
@@ -5869,7 +6132,7 @@
                   type="button"
                   class="btn quiz__btn-next"
                   disabled
-                  style="color:; border-radius: 10rem"
+                  style="color: ; border-radius: 10rem"
                   data-next=""
                   data-nextperc=""
                 >
@@ -5895,17 +6158,24 @@
               Дайте відповідь на кілька питань щоб розрахувати суму позики
             </div>
             <div class="quiz__question__head">
-              <div class="quiz__question__progress" style="border-radius: 1rem; color:">
+              <div
+                class="quiz__question__progress"
+                style="border-radius: 1rem; color: "
+              >
                 Вопрос <span class="q_num" id="num_4">1</span>
               </div>
-              <div class="quiz__question__title">На який термін потрібні гроші?</div>
+              <div class="quiz__question__title">
+                На який термін потрібні гроші?
+              </div>
             </div>
 
             <div class="quiz__answers quiz__answers--text">
               <div class="quiz__answer--txt__wrap">
                 <div class="quiz__answer__hint">
                   <div class="quiz__answer__hint--circle">?</div>
-                  <div class="quiz__answer__hint--text">от 2% в мес. (30% в год)</div>
+                  <div class="quiz__answer__hint--text">
+                    от 2% в мес. (30% в год)
+                  </div>
                 </div>
 
                 <label class="quiz__answer--txt">
@@ -5923,7 +6193,9 @@
               <div class="quiz__answer--txt__wrap">
                 <div class="quiz__answer__hint">
                   <div class="quiz__answer__hint--circle">?</div>
-                  <div class="quiz__answer__hint--text">от 1,5% в мес. (18% в год)</div>
+                  <div class="quiz__answer__hint--text">
+                    от 1,5% в мес. (18% в год)
+                  </div>
                 </div>
 
                 <label class="quiz__answer--txt">
@@ -5941,7 +6213,9 @@
               <div class="quiz__answer--txt__wrap">
                 <div class="quiz__answer__hint">
                   <div class="quiz__answer__hint--circle">?</div>
-                  <div class="quiz__answer__hint--text">от 1,0% в мес. (12% в год)</div>
+                  <div class="quiz__answer__hint--text">
+                    от 1,0% в мес. (12% в год)
+                  </div>
                 </div>
 
                 <label class="quiz__answer--txt">
@@ -5959,7 +6233,11 @@
             </div>
 
             <div class="quiz__buttons">
-              <button type="button" class="quiz__btn-prev" style="border-radius: 10rem">
+              <button
+                type="button"
+                class="quiz__btn-prev"
+                style="border-radius: 10rem"
+              >
                 <span> Назад </span>
               </button>
               <div class="quiz__btn-next__wrap">
@@ -5967,7 +6245,7 @@
                   type="button"
                   class="btn quiz__btn-next"
                   disabled
-                  style="color:; border-radius: 10rem"
+                  style="color: ; border-radius: 10rem"
                   data-next=""
                   data-nextperc=""
                 >
@@ -5993,10 +6271,15 @@
               Дайте відповідь на кілька питань щоб розрахувати суму позики
             </div>
             <div class="quiz__question__head">
-              <div class="quiz__question__progress" style="border-radius: 1rem; color:">
+              <div
+                class="quiz__question__progress"
+                style="border-radius: 1rem; color: "
+              >
                 Вопрос <span class="q_num" id="num_5">1</span>
               </div>
-              <div class="quiz__question__title">Як терміново вам потрібні гроші?</div>
+              <div class="quiz__question__title">
+                Як терміново вам потрібні гроші?
+              </div>
             </div>
 
             <div class="quiz__answers quiz__answers--text">
@@ -6023,7 +6306,9 @@
                     data-next=""
                     data-perc="90"
                   />
-                  <p style="border-radius: 10rem">Досить терміново (протягом тижня)</p>
+                  <p style="border-radius: 10rem">
+                    Досить терміново (протягом тижня)
+                  </p>
                 </label>
               </div>
               <div class="quiz__answer--txt__wrap">
@@ -6042,7 +6327,11 @@
             </div>
 
             <div class="quiz__buttons">
-              <button type="button" class="quiz__btn-prev" style="border-radius: 10rem">
+              <button
+                type="button"
+                class="quiz__btn-prev"
+                style="border-radius: 10rem"
+              >
                 <span> Назад </span>
               </button>
               <div class="quiz__btn-next__wrap">
@@ -6050,7 +6339,7 @@
                   type="button"
                   class="btn quiz__btn-next"
                   disabled
-                  style="color:; border-radius: 10rem"
+                  style="color: ; border-radius: 10rem"
                   data-next=""
                   data-nextperc=""
                 >
@@ -6064,7 +6353,7 @@
           </div>
         </div>
 
-        <div class="quiz__left" style="border-radius: 1rem; background:">
+        <div class="quiz__left" style="border-radius: 1rem; background: ">
           <div class="quiz__online">Онлайн</div>
           <div class="quiz__manager">
             <picture
@@ -6080,7 +6369,10 @@
                 class="lazyload"
                 width="230"
                 height="285" /><noscript
-                ><img src="wp-content/uploads/2023/05/р454р_1.png" alt="" data-eio="l" /></noscript
+                ><img
+                  src="wp-content/uploads/2023/05/р454р_1.png"
+                  alt=""
+                  data-eio="l" /></noscript
             ></picture>
           </div>
           <div class="quiz__manager__name">
@@ -6112,7 +6404,9 @@
                       alt=""
                       data-eio="l" /></noscript
                 ></picture>
-                <p style="color:">Умови позики з розрахунком платежів за місяцями</p>
+                <p style="color: ">
+                  Умови позики з розрахунком платежів за місяцями
+                </p>
               </li>
             </ul>
           </div>
@@ -6280,7 +6574,10 @@
           <div class="quiz__bar">
             <div class="quiz__bar__prg" style="width: 100%"></div>
             <div class="quiz__bar__text">
-              Расчет <span class="fw-medium">пройден на <span id="quiz-percent">100</span>%</span>
+              Расчет
+              <span class="fw-medium"
+                >пройден на <span id="quiz-percent">100</span>%</span
+              >
             </div>
           </div>
           <div class="quiz__question__progress" style="border-radius: 10rem">
@@ -6316,7 +6613,11 @@
               placeholder="Ваш Email"
               id="inp-mail"
             />
-            <button type="submit" style="border-radius: 10rem" class="btn quiz__final__btn">
+            <button
+              type="submit"
+              style="border-radius: 10rem"
+              class="btn quiz__final__btn"
+            >
               <div>
                 <svg
                   class="btn__load"
@@ -6352,10 +6653,19 @@
               </div>
             </button>
             <label class="quiz__final__agreement">
-              <input type="checkbox" name="agreement" class="visually-hidden" checked required />
+              <input
+                type="checkbox"
+                name="agreement"
+                class="visually-hidden"
+                checked
+                required
+              />
               <div class="quiz__final__agreement__check"></div>
               <div class="quiz__final__agreement__text">
-                Ознакомлен с <a href="index.html#popup-policy">политикой конфиденциальности</a>
+                Ознакомлен с
+                <a href="index.html#popup-policy"
+                  >политикой конфиденциальности</a
+                >
               </div>
             </label>
             <div class="quiz__final__gift">
@@ -6500,18 +6810,18 @@
       </form>
 
       <script>
-        $('#quiz_block').submit(function (e) {
+        $("#quiz_block").submit(function (e) {
           e.preventDefault();
 
-        //   $('.quiz__final__btn__text').hide();
-        //   $('.btn__load').show();
-        //   $('.btn quiz__final__btn').prop('disabled', true);
-        //   $('.btn quiz__final__btn').addClass('loading');
+          //   $('.quiz__final__btn__text').hide();
+          //   $('.btn__load').show();
+          //   $('.btn quiz__final__btn').prop('disabled', true);
+          //   $('.btn quiz__final__btn').addClass('loading');
           var form = new FormData(this);
           console.log(form);
 
-        //   $btn.find('.btn__load').hide();
-        //   $btn.find('.form-consult__btn-text').show();
+          //   $btn.find('.btn__load').hide();
+          //   $btn.find('.form-consult__btn-text').show();
           // $.ajax({
           //     url: myajax.url,
           //     data: form,
@@ -6548,7 +6858,10 @@
                   class="lazyload"
                   width="80"
                   height="108" /><noscript
-                  ><img src="wp-content/uploads/2023/02/5645р3.png" alt="" data-eio="l" /></noscript
+                  ><img
+                    src="wp-content/uploads/2023/02/5645р3.png"
+                    alt=""
+                    data-eio="l" /></noscript
               ></picture>
             </div>
             <p>Розрахунок суми позики</p>
@@ -6603,16 +6916,16 @@
                     data-eio="l" /></noscript
               ></picture>
             </div>
-            <p style="color:">Приклад розрахунку кредиту</p>
+            <p style="color: ">Приклад розрахунку кредиту</p>
           </a>
         </div>
       </div>
     </div>
     <script>
-      $(window).on('load resize', function () {
+      $(window).on("load resize", function () {
         if ($(window).width() <= 450) {
-          $('.widget').addClass('closed');
-          $('.widget-close').addClass('active');
+          $(".widget").addClass("closed");
+          $(".widget-close").addClass("active");
         }
       });
     </script>
@@ -6624,7 +6937,9 @@
           <div class="form-consult__title">Безкоштовна консультація</div>
           <div class="form-consult__c">
             <ul class="form-consult__list">
-              <div class="form-consult__list-title">Залишіть заявку на консультацію</div>
+              <div class="form-consult__list-title">
+                Залишіть заявку на консультацію
+              </div>
               <li>
                 <p>Задам пару уточнюючих питань</p>
               </li>
@@ -6696,7 +7011,11 @@
                 class="quiz__final__form__input"
                 placeholder="Ваше ім'я"
               />
-              <button type="submit" class="btn quiz__final__btn" style="border-radius: 10rem">
+              <button
+                type="submit"
+                class="btn quiz__final__btn"
+                style="border-radius: 10rem"
+              >
                 <svg
                   class="btn__load"
                   xmlns="http://www.w3.org/2000/svg"
@@ -6724,13 +7043,24 @@
                     ></animateTransform>
                   </circle>
                 </svg>
-                <span class="form-consult__btn-text" style="color:"> Чекаю дзвінка </span>
+                <span class="form-consult__btn-text" style="color: ">
+                  Чекаю дзвінка
+                </span>
               </button>
               <label class="quiz__final__agreement">
-                <input type="checkbox" name="agreement" class="visually-hidden" checked required />
+                <input
+                  type="checkbox"
+                  name="agreement"
+                  class="visually-hidden"
+                  checked
+                  required
+                />
                 <div class="quiz__final__agreement__check"></div>
                 <div class="quiz__final__agreement__text">
-                  Ознайомлений з <a href="index.html#popup-policy">політикою конфіденційності</a>
+                  Ознайомлений з
+                  <a href="index.html#popup-policy"
+                    >політикою конфіденційності</a
+                  >
                 </div>
               </label>
             </form>
@@ -6743,22 +7073,28 @@
       <div class="popup-wrap popup-wrap--flex" id="quiz_content">
         <div class="form-consult form-consult--lg">
           <div class="close"></div>
-          <div class="form-consult__title">Пример расчета стоимости кредита</div>
+          <div class="form-consult__title">
+            Пример расчета стоимости кредита
+          </div>
           <div class="form-consult__c">
             <ul class="form-consult__list">
               <li>
                 <p>
-                  К примеру вы берёте займ <b>50 000 грн</b>, процентная ставка <b>18% годовых</b>,
-                  займ на 12 месяцев и платите только проценты.
+                  К примеру вы берёте займ <b>50 000 грн</b>, процентная ставка
+                  <b>18% годовых</b>, займ на 12 месяцев и платите только
+                  проценты.
                 </p>
               </li>
               <li>
-                <p>Итого: <b>50 000 * 18% = 9 000 грн</b> оплата процентов по кредиту.</p>
+                <p>
+                  Итого: <b>50 000 * 18% = 9 000 грн</b> оплата процентов по
+                  кредиту.
+                </p>
               </li>
               <li>
                 <p>
-                  В конце года возвращаете всего <b>59 000 грн</b>, (тело кредита+проценты) без
-                  страховок, скрытых платежей и комиссий.
+                  В конце года возвращаете всего <b>59 000 грн</b>, (тело
+                  кредита+проценты) без страховок, скрытых платежей и комиссий.
                 </p>
               </li>
             </ul>
@@ -6776,14 +7112,14 @@
     </style>
 
     <script>
-      $('.form-consult__form').submit(function (e) {
+      $(".form-consult__form").submit(function (e) {
         e.preventDefault();
         var form = new FormData(this);
-        var file = $(this).data('file');
+        var file = $(this).data("file");
         if (file) {
-          var link = document.createElement('a');
-          link.setAttribute('href', file);
-          link.setAttribute('download', 'download');
+          var link = document.createElement("a");
+          link.setAttribute("href", file);
+          link.setAttribute("download", "download");
           link.click();
         }
         // $('.btn__load').show();
@@ -6807,7 +7143,9 @@
     <div class="contacts" id="contacts">
       <div class="container">
         <h3 class="title fw-bold" style="text-align: center">
-          <b class="portfolio__title" style="font-weight: 700"> Наши контакты </b>
+          <b class="portfolio__title" style="font-weight: 700">
+            Наши контакты
+          </b>
         </h3>
         <br /><br />
 
@@ -6842,7 +7180,9 @@
               </div>
               <div class="header-pin__text">
                 <h3 class="t24 fwb mbs">Email:</h3>
-                <a href="mailto:boguslav.invest@gmail.com" class="header__phone__link"
+                <a
+                  href="mailto:boguslav.invest@gmail.com"
+                  class="header__phone__link"
                   >boguslav.invest@gmail.com</a
                 >
               </div>
@@ -6934,7 +7274,10 @@
                     decoding="async"
                     class="lazyload"
                   /><noscript
-                    ><img src="wp-content/themes/quiz/assets/img/viber.svg" alt="" data-eio="l"
+                    ><img
+                      src="wp-content/themes/quiz/assets/img/viber.svg"
+                      alt=""
+                      data-eio="l"
                   /></noscript>
                 </div>
               </a>
@@ -6954,7 +7297,10 @@
                     decoding="async"
                     class="lazyload"
                   /><noscript
-                    ><img src="wp-content/themes/quiz/assets/img/telegram.svg" alt="" data-eio="l"
+                    ><img
+                      src="wp-content/themes/quiz/assets/img/telegram.svg"
+                      alt=""
+                      data-eio="l"
                   /></noscript>
                 </div>
               </a>
@@ -6973,7 +7319,10 @@
                     decoding="async"
                     class="lazyload"
                   /><noscript
-                    ><img src="wp-content/themes/quiz/assets/img/whatsapp.svg" alt="" data-eio="l"
+                    ><img
+                      src="wp-content/themes/quiz/assets/img/whatsapp.svg"
+                      alt=""
+                      data-eio="l"
                   /></noscript>
                 </div>
               </a>
@@ -6992,8 +7341,8 @@
               </iframe>
             </div>
             <p style="padding-top: 10px">
-              Данное предложение не является офертой и действует исключительно как консультационные
-              услуги.
+              Данное предложение не является офертой и действует исключительно
+              как консультационные услуги.
             </p>
           </div>
         </div>
@@ -7022,7 +7371,11 @@
 
     <div class="up"></div>
 
-    <div onclick="$('#consult-popup').fadeIn()" class="phone" style="display: none">
+    <div
+      onclick="$('#consult-popup').fadeIn()"
+      class="phone"
+      style="display: none"
+    >
       <span class="phone-pulse"></span>
       <img
         src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
@@ -7045,93 +7398,108 @@
           <div class="title policy-title">Политика конфиденциальности</div>
           <div class="policy-text">
             <p>
-              Ця Політика конфіденційності персональних даних (далі – Політика конфіденційності) діє
-              стосовно всієї інформації, яку сайт , (далі – ) розташований на доменному імені (а
-              також його субдоменах), може отримати про Користувача під час використання сайту (а
-              також його субдоменів), його програм та його продуктів.
+              Ця Політика конфіденційності персональних даних (далі – Політика
+              конфіденційності) діє стосовно всієї інформації, яку сайт , (далі
+              – ) розташований на доменному імені (а також його субдоменах),
+              може отримати про Користувача під час використання сайту (а також
+              його субдоменів), його програм та його продуктів.
             </p>
             <h2>1. Визначення термінів</h2>
             <p>
-              <strong>1.1 У цій Політиці конфіденційності використовуються такі терміни:</strong>
+              <strong
+                >1.1 У цій Політиці конфіденційності використовуються такі
+                терміни:</strong
+              >
             </p>
             <p>
-              1.1.1. «<strong>Адміністрація сайту</strong>» (далі – Адміністрація) – уповноважені
-              співробітники на управління сайтом , які організують та (або) здійснюють обробку
-              персональних даних, а також визначає цілі обробки персональних даних, склад
-              персональних даних, що підлягають обробці, дії (Операції), що здійснюються з
+              1.1.1. «<strong>Адміністрація сайту</strong>» (далі –
+              Адміністрація) – уповноважені співробітники на управління сайтом ,
+              які організують та (або) здійснюють обробку персональних даних, а
+              також визначає цілі обробки персональних даних, склад персональних
+              даних, що підлягають обробці, дії (Операції), що здійснюються з
               персональними даними.
             </p>
             <p>
-              1.1.2. «Персональні дані» &#8212; будь-яка інформація, що відноситься до прямо чи
-              опосередковано визначеної, або визначається фізичній особі (суб&#8217;єкту
-              персональних даних).
+              1.1.2. «Персональні дані» &#8212; будь-яка інформація, що
+              відноситься до прямо чи опосередковано визначеної, або
+              визначається фізичній особі (суб&#8217;єкту персональних даних).
             </p>
             <p>
-              1.1.3. «Обробка персональних даних» &#8212; будь-яка дія (операція) або сукупність дій
-              (операцій), що здійснюються з використанням засобів автоматизації або без використання
-              таких засобів із персональними даними, включаючи збирання, запис, систематизацію,
-              накопичення, зберігання, уточнення (оновлення, зміну), вилучення, використання,
-              передачу (поширення, надання, доступ), знеособлення, блокування, видалення, знищення
+              1.1.3. «Обробка персональних даних» &#8212; будь-яка дія
+              (операція) або сукупність дій (операцій), що здійснюються з
+              використанням засобів автоматизації або без використання таких
+              засобів із персональними даними, включаючи збирання, запис,
+              систематизацію, накопичення, зберігання, уточнення (оновлення,
+              зміну), вилучення, використання, передачу (поширення, надання,
+              доступ), знеособлення, блокування, видалення, знищення
               персональних даних.
             </p>
             <p>
-              1.1.4. «Конфіденційність персональних даних» &#8212; обов&#8217;язкова для дотримання
-              Оператором або іншою особою, яка отримала доступ до персональних даних, вимога не
-              допускати їх поширення без згоди суб&#8217;єкта персональних даних або наявності іншої
-              законної підстави.
+              1.1.4. «Конфіденційність персональних даних» &#8212;
+              обов&#8217;язкова для дотримання Оператором або іншою особою, яка
+              отримала доступ до персональних даних, вимога не допускати їх
+              поширення без згоди суб&#8217;єкта персональних даних або
+              наявності іншої законної підстави.
             </p>
             <p>
-              1.1.5. «Сайт» &#8212; це сукупність пов&#8217;язаних між собою веб-сторінок,
-              розміщених у мережі Інтернет за унікальною адресою (URL):
-              https://socialcredit.goldinvest.com.ua/, а також його субдоменах.
+              1.1.5. «Сайт» &#8212; це сукупність пов&#8217;язаних між собою
+              веб-сторінок, розміщених у мережі Інтернет за унікальною адресою
+              (URL): https://socialcredit.goldinvest.com.ua/, а також його
+              субдоменах.
             </p>
             <p>
-              1.1.6. «Субдомени» &#8212; це сторінки або сукупність сторінок, розташовані на доменах
-              третього рівня, що належать сайту, а також інші тимчасові сторінки, внизу який вказана
-              контактна інформація Адміністрації
+              1.1.6. «Субдомени» &#8212; це сторінки або сукупність сторінок,
+              розташовані на доменах третього рівня, що належать сайту, а також
+              інші тимчасові сторінки, внизу який вказана контактна інформація
+              Адміністрації
             </p>
             <p>
-              1.1.5. «Користувач сайту» (далі Користувач) – особа, яка має доступ до сайту, за
-              допомогою мережі Інтернет та використовує інформацію, матеріали та продукти сайту.
+              1.1.5. «Користувач сайту» (далі Користувач) – особа, яка має
+              доступ до сайту, за допомогою мережі Інтернет та використовує
+              інформацію, матеріали та продукти сайту.
             </p>
             <p>
-              1.1.7. &#171;Cookies&#187; — невеликий фрагмент даних, надісланий веб-сервером і
-              зберігається на комп&#8217;ютері користувача, який веб-клієнт або веб-браузер щоразу
-              пересилає веб-серверу в HTTP-запиті, намагаючись відкрити сторінку відповідного сайту.
+              1.1.7. &#171;Cookies&#187; — невеликий фрагмент даних, надісланий
+              веб-сервером і зберігається на комп&#8217;ютері користувача, який
+              веб-клієнт або веб-браузер щоразу пересилає веб-серверу в
+              HTTP-запиті, намагаючись відкрити сторінку відповідного сайту.
             </p>
             <p>
-              1.1.8. IP-адреса — унікальна мережна адреса вузла в комп&#8217;ютерній мережі, через
-              яку Користувач отримує доступ на .
+              1.1.8. IP-адреса — унікальна мережна адреса вузла в
+              комп&#8217;ютерній мережі, через яку Користувач отримує доступ на
+              .
             </p>
             <h2>2. Загальні положення</h2>
             <p>
-              2.1. Використання сайту Користувачем означає згоду з цією Політикою конфіденційності
-              та умовами обробки персональних даних Користувача.
+              2.1. Використання сайту Користувачем означає згоду з цією
+              Політикою конфіденційності та умовами обробки персональних даних
+              Користувача.
             </p>
             <p>
-              2.2. У разі незгоди з умовами Політики конфіденційності Користувач повинен припинити
-              використання сайту.
+              2.2. У разі незгоди з умовами Політики конфіденційності Користувач
+              повинен припинити використання сайту.
             </p>
             <p>
-              2.3. Ця Політика конфіденційності застосовується до сайту. не контролює та не несе
-              відповідальності за сайти третіх осіб, на які Користувач може перейти за посиланнями,
-              доступними на сайті.
+              2.3. Ця Політика конфіденційності застосовується до сайту. не
+              контролює та не несе відповідальності за сайти третіх осіб, на які
+              Користувач може перейти за посиланнями, доступними на сайті.
             </p>
             <p>
-              2.4. Адміністрація не перевіряє достовірність персональних даних, які надає
-              Користувач.
+              2.4. Адміністрація не перевіряє достовірність персональних даних,
+              які надає Користувач.
             </p>
             <h2>3. Предмет політики конфіденційності</h2>
             <p>
-              3.1. Ця Політика конфіденційності встановлює зобов&#8217;язання Адміністрації щодо
-              нерозголошення та забезпечення режиму захисту конфіденційності персональних даних, які
-              Користувач надає на запит Адміністрації під час реєстрації на сайті або підписки на
+              3.1. Ця Політика конфіденційності встановлює зобов&#8217;язання
+              Адміністрації щодо нерозголошення та забезпечення режиму захисту
+              конфіденційності персональних даних, які Користувач надає на запит
+              Адміністрації під час реєстрації на сайті або підписки на
               інформаційну e-mail розсилку.
             </p>
             <p>
-              3.2. Персональні дані, дозволені для обробки в рамках цієї Політики конфіденційності,
-              надаються Користувачем шляхом заповнення форм на сайті і включають наступну
-              інформацію:<br />
+              3.2. Персональні дані, дозволені для обробки в рамках цієї
+              Політики конфіденційності, надаються Користувачем шляхом
+              заповнення форм на сайті і включають наступну інформацію:<br />
               3.2.1. прізвище, ім&#8217;я, по-батькові Користувача;<br />
               3.2.2. контактний телефон Користувача;<br />
               3.2.3. адреса електронної пошти (e-mail)<br />
@@ -7139,7 +7507,8 @@
               3.2.5. фотографію (при необхідності)
             </p>
             <p>
-              3.3. захищає Дані, які автоматично передаються під час відвідування сторінок:<br />
+              3.3. захищає Дані, які автоматично передаються під час
+              відвідування сторінок:<br />
               &#8212; IP адреса;<br />
               &#8212; інформація з cookies;<br />
               &#8212; інформація про браузер<br />
@@ -7147,199 +7516,229 @@
               &#8212; реферер (адреса попередньої сторінки).
             </p>
             <p>
-              3.3.1. Відключення cookies може спричинити неможливість доступу до частин сайту, які
-              потребують авторизації.
+              3.3.1. Відключення cookies може спричинити неможливість доступу до
+              частин сайту, які потребують авторизації.
             </p>
             <p>
-              3.3.2. здійснює збір статистики про IP-адреси своїх відвідувачів. Ця інформація
-              використовується з метою запобігання, виявлення та вирішення технічних проблем.
+              3.3.2. здійснює збір статистики про IP-адреси своїх відвідувачів.
+              Ця інформація використовується з метою запобігання, виявлення та
+              вирішення технічних проблем.
             </p>
             <p>
-              3.4. Будь-яка інша персональна інформація не обумовлена вище (історія відвідування,
-              браузери, операційні системи тощо) підлягає надійному зберіганню та нерозповсюдженню,
-              за винятком випадків, передбачених у п.п. 5.2. цієї Політики конфіденційності.
+              3.4. Будь-яка інша персональна інформація не обумовлена вище
+              (історія відвідування, браузери, операційні системи тощо) підлягає
+              надійному зберіганню та нерозповсюдженню, за винятком випадків,
+              передбачених у п.п. 5.2. цієї Політики конфіденційності.
             </p>
             <h2>4. Цілі збору персональної інформації користувача</h2>
             <p>
-              4.1. Персональні дані Користувача Адміністрація може використовуватись з метою:<br />
-              4.1.1. Ідентифікації Користувача, зареєстрованого на сайті для подальшої
-              авторизації.<br />
-              4.1.2. Надання Користувачеві доступу до персоналізованих даних сайту.<br />
-              4.1.3. Встановлення з Користувачем зворотного зв&#8217;язку, включаючи направлення
-              повідомлень, запитів щодо використання сайту, обробки запитів та заявок від
-              Користувача.<br />
-              4.1.4. Визначення місця знаходження Користувача для забезпечення безпеки, запобігання
-              шахрайству.<br />
-              4.1.5. Підтвердження достовірності та повноти персональних даних, наданих
-              Користувачем.<br />
-              4.1.6. Створення облікового запису для використання частин сайту, якщо Користувач
-              погодився на створення облікового запису.<br />
+              4.1. Персональні дані Користувача Адміністрація може
+              використовуватись з метою:<br />
+              4.1.1. Ідентифікації Користувача, зареєстрованого на сайті для
+              подальшої авторизації.<br />
+              4.1.2. Надання Користувачеві доступу до персоналізованих даних
+              сайту.<br />
+              4.1.3. Встановлення з Користувачем зворотного зв&#8217;язку,
+              включаючи направлення повідомлень, запитів щодо використання
+              сайту, обробки запитів та заявок від Користувача.<br />
+              4.1.4. Визначення місця знаходження Користувача для забезпечення
+              безпеки, запобігання шахрайству.<br />
+              4.1.5. Підтвердження достовірності та повноти персональних даних,
+              наданих Користувачем.<br />
+              4.1.6. Створення облікового запису для використання частин сайту,
+              якщо Користувач погодився на створення облікового запису.<br />
               4.1.7. Повідомлення Користувача електронною поштою.<br />
-              4.1.8. Надання Користувачеві ефективної технічної підтримки у разі виникнення проблем,
-              пов&#8217;язаних з використанням сайту .<br />
-              4.1.9. Надання Користувачеві за його згодою спеціальних пропозицій, розсилки новин та
-              інших відомостей від імені сайту .
+              4.1.8. Надання Користувачеві ефективної технічної підтримки у разі
+              виникнення проблем, пов&#8217;язаних з використанням сайту .<br />
+              4.1.9. Надання Користувачеві за його згодою спеціальних
+              пропозицій, розсилки новин та інших відомостей від імені сайту .
             </p>
             <h2>5. Способи та терміни обробки персональної інформації</h2>
             <p>
-              5.1. Обробка персональних даних Користувача здійснюється без обмеження терміну
-              будь-яким законним способом, у тому числі в інформаційних системах персональних даних
-              з використанням засобів автоматизації або без використання таких засобів.
+              5.1. Обробка персональних даних Користувача здійснюється без
+              обмеження терміну будь-яким законним способом, у тому числі в
+              інформаційних системах персональних даних з використанням засобів
+              автоматизації або без використання таких засобів.
             </p>
             <p>
-              5.2. Персональні дані Користувача можуть бути передані уповноваженим органам державної
-              влади лише на підставах та в порядку, встановлених законодавством Верховної Ради
-              України.
+              5.2. Персональні дані Користувача можуть бути передані
+              уповноваженим органам державної влади лише на підставах та в
+              порядку, встановлених законодавством Верховної Ради України.
             </p>
             <p>
-              5.3. У разі втрати або розголошення персональних даних Адміністрація має право не
-              інформувати Користувача про втрату або розголошення персональних даних.
+              5.3. У разі втрати або розголошення персональних даних
+              Адміністрація має право не інформувати Користувача про втрату або
+              розголошення персональних даних.
             </p>
             <p>
-              5.4. Адміністрація вживає необхідних організаційних та технічних заходів для захисту
-              персональної інформації Користувача від неправомірного або випадкового доступу,
-              знищення, зміни, блокування, копіювання, розповсюдження, а також від інших
+              5.4. Адміністрація вживає необхідних організаційних та технічних
+              заходів для захисту персональної інформації Користувача від
+              неправомірного або випадкового доступу, знищення, зміни,
+              блокування, копіювання, розповсюдження, а також від інших
               неправомірних дій третіх осіб.
             </p>
             <p>
-              5.5. Адміністрація спільно з Користувачем вживає всіх необхідних заходів щодо
-              запобігання збиткам або іншим негативним наслідкам, викликаним втратою або
-              розголошенням персональних даних Користувача.
+              5.5. Адміністрація спільно з Користувачем вживає всіх необхідних
+              заходів щодо запобігання збиткам або іншим негативним наслідкам,
+              викликаним втратою або розголошенням персональних даних
+              Користувача.
             </p>
             <h2>6. Права та обов&#8217;язки сторін</h2>
             <p><strong>6.1. Користувач має право:</strong></p>
             <p>
-              6.1.1. Приймати вільне рішення про надання своїх персональних даних, необхідних для
-              використання сайту та давати згоду на їх обробку.
+              6.1.1. Приймати вільне рішення про надання своїх персональних
+              даних, необхідних для використання сайту та давати згоду на їх
+              обробку.
             </p>
             <p>
-              6.1.2. Оновити, доповнити надану інформацію про персональні дані у разі зміни даної
-              інформації.
+              6.1.2. Оновити, доповнити надану інформацію про персональні дані у
+              разі зміни даної інформації.
             </p>
             <p>
-              6.1.3. Користувач має право на отримання в Адміністрації інформації щодо обробки його
-              персональних даних, якщо таке право не обмежене законодавчо. Користувач має право
-              вимагати від Адміністрації уточнення його персональних даних, їхнього блокування або
-              знищення у разі, якщо персональні дані є неповними, застарілими, неточними, незаконно
-              отриманими або не є необхідними для заявленої мети обробки, а також вживати
-              передбачених законом заходів щодо захисту своїх прав. Для цього достатньо повідомити
+              6.1.3. Користувач має право на отримання в Адміністрації
+              інформації щодо обробки його персональних даних, якщо таке право
+              не обмежене законодавчо. Користувач має право вимагати від
+              Адміністрації уточнення його персональних даних, їхнього
+              блокування або знищення у разі, якщо персональні дані є неповними,
+              застарілими, неточними, незаконно отриманими або не є необхідними
+              для заявленої мети обробки, а також вживати передбачених законом
+              заходів щодо захисту своїх прав. Для цього достатньо повідомити
               Адміністрацію за вказаною електронною поштою адресою:
               <em>boguslav.invest@gmail.com.</em>
             </p>
             <p><strong>6.2. Адміністрація зобов&#8217;язана:</strong></p>
             <p>
-              6.2.1. Використовувати отриману інформацію виключно для цілей, зазначених у п. 4 цієї
-              Політики конфіденційності.
+              6.2.1. Використовувати отриману інформацію виключно для цілей,
+              зазначених у п. 4 цієї Політики конфіденційності.
             </p>
             <p>
-              6.2.2. Забезпечити зберігання конфіденційної інформації в таємниці, не розголошувати
-              без попереднього письмового дозволу Користувача, а також не здійснювати продаж, обмін,
-              опублікування чи розголошення іншими можливими способами переданих персональних даних
-              Користувача, за винятком п.п. 5.2. цієї Політики Конфіденційності.
+              6.2.2. Забезпечити зберігання конфіденційної інформації в
+              таємниці, не розголошувати без попереднього письмового дозволу
+              Користувача, а також не здійснювати продаж, обмін, опублікування
+              чи розголошення іншими можливими способами переданих персональних
+              даних Користувача, за винятком п.п. 5.2. цієї Політики
+              Конфіденційності.
             </p>
             <p>
-              6.2.3. Вживати запобіжних заходів для захисту конфіденційності персональних даних
-              Користувача згідно з порядком, який зазвичай використовується для захисту такого роду
-              інформації в існуючому діловому обороті.
+              6.2.3. Вживати запобіжних заходів для захисту конфіденційності
+              персональних даних Користувача згідно з порядком, який зазвичай
+              використовується для захисту такого роду інформації в існуючому
+              діловому обороті.
             </p>
             <p>
-              6.2.4. Здійснити блокування персональних даних, що належать до відповідного
-              Користувача, з моменту звернення або запиту Користувача або його законного
-              представника або уповноваженого органу захисту прав суб&#8217;єктів персональних даних
-              на період перевірки у разі виявлення недостовірних персональних даних або
+              6.2.4. Здійснити блокування персональних даних, що належать до
+              відповідного Користувача, з моменту звернення або запиту
+              Користувача або його законного представника або уповноваженого
+              органу захисту прав суб&#8217;єктів персональних даних на період
+              перевірки у разі виявлення недостовірних персональних даних або
               неправомірних дій.
             </p>
             <h2>Відповідальність сторін</h2>
             <p>
-              7.1. Адміністрація, яка не виконала своїх зобов&#8217;язань, несе відповідальність за
-              збитки, понесені Користувачем у зв&#8217;язку з неправомірним використанням
-              персональних даних відповідно до законодавства України, за винятком випадків,
-              передбачених п.п. 5.2. та 7.2. цієї Політики Конфіденційності.
+              7.1. Адміністрація, яка не виконала своїх зобов&#8217;язань, несе
+              відповідальність за збитки, понесені Користувачем у зв&#8217;язку
+              з неправомірним використанням персональних даних відповідно до
+              законодавства України, за винятком випадків, передбачених п.п.
+              5.2. та 7.2. цієї Політики Конфіденційності.
             </p>
             <p>
-              7.2. У разі втрати або розголошення Конфіденційної інформації Адміністрація не несе
-              відповідальності, якщо ця конфіденційна інформація:<br />
-              7.2.1. Стала громадським надбанням до її втрати чи розголошення.<br />
-              7.2.2. Була отримана від третьої сторони до її отримання Адміністрацією Ресурсу.<br />
+              7.2. У разі втрати або розголошення Конфіденційної інформації
+              Адміністрація не несе відповідальності, якщо ця конфіденційна
+              інформація:<br />
+              7.2.1. Стала громадським надбанням до її втрати чи
+              розголошення.<br />
+              7.2.2. Була отримана від третьої сторони до її отримання
+              Адміністрацією Ресурсу.<br />
               7.2.3. Була розголошена за згодою Користувача.
             </p>
             <p>
-              7.3. Користувач несе повну відповідальність за дотримання вимог законодавства України,
-              у тому числі законів про рекламу, про захист авторських та суміжних прав, про охорону
-              товарних знаків та знаків обслуговування, але не обмежуючись перерахованим, включаючи
+              7.3. Користувач несе повну відповідальність за дотримання вимог
+              законодавства України, у тому числі законів про рекламу, про
+              захист авторських та суміжних прав, про охорону товарних знаків та
+              знаків обслуговування, але не обмежуючись перерахованим, включаючи
               повну відповідальність за зміст та форму матеріалів.
             </p>
             <p>
-              7.4. Користувач визнає, що відповідальність за будь-яку інформацію (у тому числі, але
-              не обмежуючись: файли з даними, тексти тощо), до якої він може мати доступ як до
-              частини сайту, несе особа, яка надала таку інформацію.
+              7.4. Користувач визнає, що відповідальність за будь-яку інформацію
+              (у тому числі, але не обмежуючись: файли з даними, тексти тощо),
+              до якої він може мати доступ як до частини сайту, несе особа, яка
+              надала таку інформацію.
             </p>
             <p>
-              7.5. Користувач погоджується, що інформація, надана йому як частина сайту може бути
-              об&#8217;єктом інтелектуальної власності, права на який захищені та належать іншим
-              Користувачам, партнерам або рекламодавцям, які розміщують таку інформацію на сайті
-              .<br />
-              Користувач не має права вносити зміни, передавати в оренду, передавати на умовах
-              позики, продавати, розповсюджувати або створювати похідні роботи на основі такого
-              Змісту (повністю або в частині), за винятком випадків, коли такі дії були письмово
-              прямо дозволені власниками такого Змісту відповідно до умовами окремої угоди.
+              7.5. Користувач погоджується, що інформація, надана йому як
+              частина сайту може бути об&#8217;єктом інтелектуальної власності,
+              права на який захищені та належать іншим Користувачам, партнерам
+              або рекламодавцям, які розміщують таку інформацію на сайті .<br />
+              Користувач не має права вносити зміни, передавати в оренду,
+              передавати на умовах позики, продавати, розповсюджувати або
+              створювати похідні роботи на основі такого Змісту (повністю або в
+              частині), за винятком випадків, коли такі дії були письмово прямо
+              дозволені власниками такого Змісту відповідно до умовами окремої
+              угоди.
             </p>
             <p>
-              7.6. Стосовно текстових матеріалів (статей, публікацій, що у вільному публічному
-              доступі на сайті ) допускається їх поширення за умови, що буде дано посилання на .
+              7.6. Стосовно текстових матеріалів (статей, публікацій, що у
+              вільному публічному доступі на сайті ) допускається їх поширення
+              за умови, що буде дано посилання на .
             </p>
             <p>
-              7.7. Адміністрація не несе відповідальності перед Користувачем за будь-які збитки або
-              збитки, завдані Користувачем внаслідок видалення, збою або неможливості збереження
-              будь-якого Змісту та інших комунікаційних даних, що містяться на сайті або передаються
+              7.7. Адміністрація не несе відповідальності перед Користувачем за
+              будь-які збитки або збитки, завдані Користувачем внаслідок
+              видалення, збою або неможливості збереження будь-якого Змісту та
+              інших комунікаційних даних, що містяться на сайті або передаються
               через нього.
             </p>
             <p>
-              7.8. Адміністрація не несе відповідальності за будь-які прямі чи непрямі збитки, що
-              відбулися через: використання або неможливість використання сайту або окремих
-              сервісів; несанкціонованого доступу до комунікацій Користувача; заяви чи поведінка
-              будь-якої третьої особи на сайті.
+              7.8. Адміністрація не несе відповідальності за будь-які прямі чи
+              непрямі збитки, що відбулися через: використання або неможливість
+              використання сайту або окремих сервісів; несанкціонованого доступу
+              до комунікацій Користувача; заяви чи поведінка будь-якої третьої
+              особи на сайті.
             </p>
             <p>
-              7.9. Адміністрація не несе відповідальності за будь-яку інформацію, розміщену
-              користувачем на сайті, включаючи, але не обмежуючись: інформацію, захищену авторським
-              правом, без прямої згоди власника авторського права.
+              7.9. Адміністрація не несе відповідальності за будь-яку
+              інформацію, розміщену користувачем на сайті, включаючи, але не
+              обмежуючись: інформацію, захищену авторським правом, без прямої
+              згоди власника авторського права.
             </p>
             <h2>8. Вирішення спорів</h2>
             <p>
-              8.1. До звернення до суду із позовом щодо спорів, що виникають із відносин між
-              Користувачем та Адміністрацією, обов&#8217;язковим є пред&#8217;явлення претензії
-              (письмової пропозиції чи пропозиції в електронному вигляді про добровільне
-              врегулювання спору).
+              8.1. До звернення до суду із позовом щодо спорів, що виникають із
+              відносин між Користувачем та Адміністрацією, обов&#8217;язковим є
+              пред&#8217;явлення претензії (письмової пропозиції чи пропозиції в
+              електронному вигляді про добровільне врегулювання спору).
             </p>
             <p>
-              8.2. Одержувач претензії протягом 30 календарних днів з дня отримання претензії
-              письмово або в електронному вигляді повідомляє заявника претензії про результати
-              розгляду претензії.
+              8.2. Одержувач претензії протягом 30 календарних днів з дня
+              отримання претензії письмово або в електронному вигляді повідомляє
+              заявника претензії про результати розгляду претензії.
             </p>
             <p>
-              8.3. При недосягненні угоди спір буде передано на розгляд Арбітражного суду м.Київ
+              8.3. При недосягненні угоди спір буде передано на розгляд
+              Арбітражного суду м.Київ
             </p>
             <p>
-              8.4. До цієї Політики конфіденційності та відносин між Користувачем та Адміністрацією
-              застосовується чинне законодавство України.
+              8.4. До цієї Політики конфіденційності та відносин між
+              Користувачем та Адміністрацією застосовується чинне законодавство
+              України.
             </p>
             <h2>9. Додаткові умови</h2>
             <p>
-              9.1. Адміністрація має право вносити зміни до цієї Політики конфіденційності без згоди
-              Користувача.
+              9.1. Адміністрація має право вносити зміни до цієї Політики
+              конфіденційності без згоди Користувача.
             </p>
             <p>
-              9.2. Нова Політика конфіденційності набирає чинності з моменту її розміщення на сайті,
-              якщо інше не передбачено новою редакцією Політики конфіденційності.
+              9.2. Нова Політика конфіденційності набирає чинності з моменту її
+              розміщення на сайті, якщо інше не передбачено новою редакцією
+              Політики конфіденційності.
             </p>
             <p>
-              9.3. Усі пропозиції чи питання щодо цієї Політики конфіденційності слід повідомляти за
-              адресою:
+              9.3. Усі пропозиції чи питання щодо цієї Політики конфіденційності
+              слід повідомляти за адресою:
             </p>
             <p>
-              9.4. Чинна Політика конфіденційності розміщена на сторінці за адресою
-              http:///politika.html
+              9.4. Чинна Політика конфіденційності розміщена на сторінці за
+              адресою http:///politika.html
             </p>
             <p>Оновлено: 14 жовтня 2023 року</p>
           </div>
@@ -7348,62 +7747,71 @@
     </div>
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8SLKRZ1XMN"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-8SLKRZ1XMN"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
-      gtag('js', new Date());
+      gtag("js", new Date());
 
-      gtag('config', 'G-8SLKRZ1XMN');
+      gtag("config", "G-8SLKRZ1XMN");
     </script>
     <script>
-      $('input[name="phone"]').mask('+38 (999) 999-99-99');
+      $('input[name="phone"]').mask("+38 (999) 999-99-99");
 
-      $('input[type="file"]').on('change', function () {
-        let countFiles = '';
-        if (this.files && this.files.length >= 1) countFiles = this.files.length;
-        var box = $(this).closest('.quiz__file-label');
-        var filesText = $(box).find('.quiz__file__text');
+      $('input[type="file"]').on("change", function () {
+        let countFiles = "";
+        if (this.files && this.files.length >= 1)
+          countFiles = this.files.length;
+        var box = $(this).closest(".quiz__file-label");
+        var filesText = $(box).find(".quiz__file__text");
         console.log(box);
         console.log(filesText);
-        if (countFiles) $(filesText).html('Выбрано файлов: ' + countFiles);
+        if (countFiles) $(filesText).html("Выбрано файлов: " + countFiles);
         else {
-          $(filesText).html('Загрузите файл');
+          $(filesText).html("Загрузите файл");
         }
       });
     </script>
 
     <script type="text/javascript">
       window.WBK_Settings = {
-        whiteSaasCode: 'bce5aaed2d411781045a3e7b27ebdd31',
-        serverUrl: 'https://ua.envytools.com'
+        whiteSaasCode: "bce5aaed2d411781045a3e7b27ebdd31",
+        serverUrl: "https://ua.envytools.com",
       };
       !(function () {
-        var l = document.createElement('link');
-        (l.rel = 'stylesheet'),
-          (l.type = 'text/css'),
-          (l.href = 'https://cdn.envytools.com/widget/cbk.css'),
+        var l = document.createElement("link");
+        (l.rel = "stylesheet"),
+          (l.type = "text/css"),
+          (l.href = "https://cdn.envytools.com/widget/cbk.css"),
           document.head.appendChild(l);
-        var t = document.createElement('script');
-        (t.type = 'text/javascript'),
+        var t = document.createElement("script");
+        (t.type = "text/javascript"),
           (t.async = !0),
-          (t.src = 'https://cdn.envytools.com/widget/cbk.js'),
+          (t.src = "https://cdn.envytools.com/widget/cbk.js"),
           document.head.appendChild(t);
       })();
     </script>
 
     <style>
-      @charset "UTF-8";
-
-      @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700&display=swap');
+      @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700&display=swap");
     </style>
 
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css"
+    />
     <script type="text/javascript" id="eio-lazy-load-js-before">
-      var eio_lazy_vars = { exactdn_domain: '', skip_autoscale: 0, threshold: 0 };
+      var eio_lazy_vars = {
+        exactdn_domain: "",
+        skip_autoscale: 0,
+        threshold: 0,
+      };
     </script>
     <script
       type="text/javascript"
@@ -7411,14 +7819,14 @@
       id="eio-lazy-load-js"
     ></script>
     <script type="text/javascript" id="rocket-browser-checker-js-after">
-      'use strict';
+      "use strict";
       var _createClass = (function () {
         function defineProperties(target, props) {
           for (var i = 0; i < props.length; i++) {
             var descriptor = props[i];
             (descriptor.enumerable = descriptor.enumerable || !1),
               (descriptor.configurable = !0),
-              'value' in descriptor && (descriptor.writable = !0),
+              "value" in descriptor && (descriptor.writable = !0),
               Object.defineProperty(target, descriptor.key, descriptor);
           }
         }
@@ -7432,7 +7840,7 @@
       })();
       function _classCallCheck(instance, Constructor) {
         if (!(instance instanceof Constructor))
-          throw new TypeError('Cannot call a class as a function');
+          throw new TypeError("Cannot call a class as a function");
       }
       var RocketBrowserCompatibilityChecker = (function () {
         function RocketBrowserCompatibilityChecker(options) {
@@ -7444,25 +7852,25 @@
         return (
           _createClass(RocketBrowserCompatibilityChecker, [
             {
-              key: '_checkPassiveOption',
+              key: "_checkPassiveOption",
               value: function (self) {
                 try {
                   var options = {
                     get passive() {
                       return !(self.passiveSupported = !0);
-                    }
+                    },
                   };
-                  window.addEventListener('test', null, options),
-                    window.removeEventListener('test', null, options);
+                  window.addEventListener("test", null, options),
+                    window.removeEventListener("test", null, options);
                 } catch (err) {
                   self.passiveSupported = !1;
                 }
-              }
+              },
             },
             {
-              key: 'initRequestIdleCallback',
+              key: "initRequestIdleCallback",
               value: function () {
-                (!1) in window &&
+                !1 in window &&
                   (window.requestIdleCallback = function (cb) {
                     var start = Date.now();
                     return setTimeout(function () {
@@ -7470,46 +7878,49 @@
                         didTimeout: !1,
                         timeRemaining: function () {
                           return Math.max(0, 50 - (Date.now() - start));
-                        }
+                        },
                       });
                     }, 1);
                   }),
-                  (!1) in window &&
+                  !1 in window &&
                     (window.cancelIdleCallback = function (id) {
                       return clearTimeout(id);
                     });
-              }
+              },
             },
             {
-              key: 'isDataSaverModeOn',
+              key: "isDataSaverModeOn",
               value: function () {
-                return 'connection' in navigator && !0 === navigator.connection.saveData;
-              }
+                return (
+                  "connection" in navigator &&
+                  !0 === navigator.connection.saveData
+                );
+              },
             },
             {
-              key: 'supportsLinkPrefetch',
+              key: "supportsLinkPrefetch",
               value: function () {
-                var elem = document.createElement('link');
+                var elem = document.createElement("link");
                 return (
                   elem.relList &&
                   elem.relList.supports &&
-                  elem.relList.supports('prefetch') &&
+                  elem.relList.supports("prefetch") &&
                   window.IntersectionObserver &&
-                  'isIntersecting' in IntersectionObserverEntry.prototype
+                  "isIntersecting" in IntersectionObserverEntry.prototype
                 );
-              }
+              },
             },
             {
-              key: 'isSlowConnection',
+              key: "isSlowConnection",
               value: function () {
                 return (
-                  'connection' in navigator &&
-                  'effectiveType' in navigator.connection &&
-                  ('2g' === navigator.connection.effectiveType ||
-                    'slow-2g' === navigator.connection.effectiveType)
+                  "connection" in navigator &&
+                  "effectiveType" in navigator.connection &&
+                  ("2g" === navigator.connection.effectiveType ||
+                    "slow-2g" === navigator.connection.effectiveType)
                 );
-              }
-            }
+              },
+            },
           ]),
           RocketBrowserCompatibilityChecker
         );
@@ -7519,30 +7930,30 @@
       /* <![CDATA[ */
       var RocketPreloadLinksConfig = {
         excludeUris:
-          '\/(.+\/)?feed\/?.+\/?|\/(?:.+\/)?embed\/|\/(index\\.php\/)?wp\\-json(\/.*|$)|\/wp-admin\/|\/logout\/|\/wp-login.php',
-        usesTrailingSlash: '1',
-        imageExt: 'jpg|jpeg|gif|png|tiff|bmp|webp|avif',
-        fileExt: 'jpg|jpeg|gif|png|tiff|bmp|webp|avif|php|pdf|html|htm',
-        siteUrl: 'https:\/\/socialcredit.goldinvest.com.ua',
-        onHoverDelay: '100',
-        rateThrottle: '3'
+          "\/(.+\/)?feed\/?.+\/?|\/(?:.+\/)?embed\/|\/(index\\.php\/)?wp\\-json(\/.*|$)|\/wp-admin\/|\/logout\/|\/wp-login.php",
+        usesTrailingSlash: "1",
+        imageExt: "jpg|jpeg|gif|png|tiff|bmp|webp|avif",
+        fileExt: "jpg|jpeg|gif|png|tiff|bmp|webp|avif|php|pdf|html|htm",
+        siteUrl: "https:\/\/socialcredit.goldinvest.com.ua",
+        onHoverDelay: "100",
+        rateThrottle: "3",
       };
       /* ]]> */
     </script>
     <script type="text/javascript" id="rocket-preload-links-js-after">
       (function () {
-        'use strict';
+        "use strict";
         var r =
-            'function' == typeof Symbol && 'symbol' == typeof Symbol.iterator
+            "function" == typeof Symbol && "symbol" == typeof Symbol.iterator
               ? function (e) {
                   return typeof e;
                 }
               : function (e) {
                   return e &&
-                    'function' == typeof Symbol &&
+                    "function" == typeof Symbol &&
                     e.constructor === Symbol &&
                     e !== Symbol.prototype
-                    ? 'symbol'
+                    ? "symbol"
                     : typeof e;
                 },
           e = (function () {
@@ -7551,7 +7962,7 @@
                 var i = t[n];
                 (i.enumerable = i.enumerable || !1),
                   (i.configurable = !0),
-                  'value' in i && (i.writable = !0),
+                  "value" in i && (i.writable = !0),
                   Object.defineProperty(e, i.key, i);
               }
             }
@@ -7560,7 +7971,8 @@
             };
           })();
         function i(e, t) {
-          if (!(e instanceof t)) throw new TypeError('Cannot call a class as a function');
+          if (!(e instanceof t))
+            throw new TypeError("Cannot call a class as a function");
         }
         var t = (function () {
           function n(e, t) {
@@ -7578,50 +7990,58 @@
               n,
               [
                 {
-                  key: 'init',
+                  key: "init",
                   value: function () {
                     !this.browser.supportsLinkPrefetch() ||
                       this.browser.isDataSaverModeOn() ||
                       this.browser.isSlowConnection() ||
                       ((this.regex = {
-                        excludeUris: RegExp(this.config.excludeUris, 'i'),
-                        images: RegExp('.(' + this.config.imageExt + ')$', 'i'),
-                        fileExt: RegExp('.(' + this.config.fileExt + ')$', 'i')
+                        excludeUris: RegExp(this.config.excludeUris, "i"),
+                        images: RegExp(".(" + this.config.imageExt + ")$", "i"),
+                        fileExt: RegExp(".(" + this.config.fileExt + ")$", "i"),
                       }),
                       this._initListeners(this));
-                  }
+                  },
                 },
                 {
-                  key: '_initListeners',
+                  key: "_initListeners",
                   value: function (e) {
                     -1 < this.config.onHoverDelay &&
-                      document.addEventListener('mouseover', e.listener.bind(e), e.listenerOptions),
-                      document.addEventListener('mousedown', e.listener.bind(e), e.listenerOptions),
                       document.addEventListener(
-                        'touchstart',
+                        "mouseover",
+                        e.listener.bind(e),
+                        e.listenerOptions
+                      ),
+                      document.addEventListener(
+                        "mousedown",
+                        e.listener.bind(e),
+                        e.listenerOptions
+                      ),
+                      document.addEventListener(
+                        "touchstart",
                         e.listener.bind(e),
                         e.listenerOptions
                       );
-                  }
+                  },
                 },
                 {
-                  key: 'listener',
+                  key: "listener",
                   value: function (e) {
-                    var t = e.target.closest('a'),
+                    var t = e.target.closest("a"),
                       n = this._prepareUrl(t);
                     if (null !== n)
                       switch (e.type) {
-                        case 'mousedown':
-                        case 'touchstart':
+                        case "mousedown":
+                        case "touchstart":
                           this._addPrefetchLink(n);
                           break;
-                        case 'mouseover':
-                          this._earlyPrefetch(t, n, 'mouseout');
+                        case "mouseover":
+                          this._earlyPrefetch(t, n, "mouseout");
                       }
-                  }
+                  },
                 },
                 {
-                  key: '_earlyPrefetch',
+                  key: "_earlyPrefetch",
                   value: function (t, e, n) {
                     var i = this,
                       r = setTimeout(function () {
@@ -7640,32 +8060,32 @@
                       },
                       { passive: !0 }
                     );
-                  }
+                  },
                 },
                 {
-                  key: '_addPrefetchLink',
+                  key: "_addPrefetchLink",
                   value: function (i) {
                     return (
                       this.prefetched.add(i.href),
                       new Promise(function (e, t) {
-                        var n = document.createElement('link');
-                        (n.rel = 'prefetch'),
+                        var n = document.createElement("link");
+                        (n.rel = "prefetch"),
                           (n.href = i.href),
                           (n.onload = e),
                           (n.onerror = t),
                           document.head.appendChild(n);
                       }).catch(function () {})
                     );
-                  }
+                  },
                 },
                 {
-                  key: '_prepareUrl',
+                  key: "_prepareUrl",
                   value: function (e) {
                     if (
                       null === e ||
-                      'object' !== (void 0 === e ? 'undefined' : r(e)) ||
-                      (!1) in e ||
-                      -1 === ['http:', 'https:'].indexOf(e.protocol)
+                      "object" !== (void 0 === e ? "undefined" : r(e)) ||
+                      !1 in e ||
+                      -1 === ["http:", "https:"].indexOf(e.protocol)
                     )
                       return null;
                     var t = e.href.substring(0, this.config.siteUrl.length),
@@ -7675,58 +8095,61 @@
                         protocol: e.protocol,
                         origin: t,
                         pathname: n,
-                        href: t + n
+                        href: t + n,
                       };
                     return this._isLinkOk(i) ? i : null;
-                  }
+                  },
                 },
                 {
-                  key: '_getPathname',
+                  key: "_getPathname",
                   value: function (e, t) {
                     var n = t ? e.substring(this.config.siteUrl.length) : e;
                     return (
-                      n.startsWith('/') || (n = '/' + n),
-                      this._shouldAddTrailingSlash(n) ? n + '/' : n
+                      n.startsWith("/") || (n = "/" + n),
+                      this._shouldAddTrailingSlash(n) ? n + "/" : n
                     );
-                  }
+                  },
                 },
                 {
-                  key: '_shouldAddTrailingSlash',
+                  key: "_shouldAddTrailingSlash",
                   value: function (e) {
                     return (
                       this.config.usesTrailingSlash &&
-                      !e.endsWith('/') &&
+                      !e.endsWith("/") &&
                       !this.regex.fileExt.test(e)
                     );
-                  }
+                  },
                 },
                 {
-                  key: '_isLinkOk',
+                  key: "_isLinkOk",
                   value: function (e) {
                     return (
                       null !== e &&
-                      'object' === (void 0 === e ? 'undefined' : r(e)) &&
+                      "object" === (void 0 === e ? "undefined" : r(e)) &&
                       !this.prefetched.has(e.href) &&
                       e.origin === this.config.siteUrl &&
-                      -1 === e.href.indexOf('?') &&
-                      -1 === e.href.indexOf('#') &&
+                      -1 === e.href.indexOf("?") &&
+                      -1 === e.href.indexOf("#") &&
                       !this.regex.excludeUris.test(e.href) &&
                       !this.regex.images.test(e.href)
                     );
-                  }
-                }
+                  },
+                },
               ],
               [
                 {
-                  key: 'run',
+                  key: "run",
                   value: function () {
-                    'undefined' != typeof RocketPreloadLinksConfig &&
+                    "undefined" != typeof RocketPreloadLinksConfig &&
                       new n(
-                        new RocketBrowserCompatibilityChecker({ capture: !0, passive: !0 }),
+                        new RocketBrowserCompatibilityChecker({
+                          capture: !0,
+                          passive: !0,
+                        }),
                         RocketPreloadLinksConfig
                       ).init();
-                  }
-                }
+                  },
+                },
               ]
             ),
             n
@@ -7737,30 +8160,30 @@
     </script>
     <script>
       window.lazyLoadOptions = {
-        elements_selector: 'iframe[data-lazy-src]',
-        data_src: 'lazy-src',
-        data_srcset: 'lazy-srcset',
-        data_sizes: 'lazy-sizes',
-        class_loading: 'lazyloading',
-        class_loaded: 'lazyloaded',
+        elements_selector: "iframe[data-lazy-src]",
+        data_src: "lazy-src",
+        data_srcset: "lazy-srcset",
+        data_sizes: "lazy-sizes",
+        class_loading: "lazyloading",
+        class_loaded: "lazyloaded",
         threshold: 300,
         callback_loaded: function (element) {
           if (
-            element.tagName === 'IFRAME' &&
-            element.dataset.rocketLazyload == 'fitvidscompatible'
+            element.tagName === "IFRAME" &&
+            element.dataset.rocketLazyload == "fitvidscompatible"
           ) {
-            if (element.classList.contains('lazyloaded')) {
-              if (typeof window.jQuery != 'undefined') {
+            if (element.classList.contains("lazyloaded")) {
+              if (typeof window.jQuery != "undefined") {
                 if (jQuery.fn.fitVids) {
                   jQuery(element).parent().fitVids();
                 }
               }
             }
           }
-        }
+        },
       };
       window.addEventListener(
-        'LazyLoad::Initialized',
+        "LazyLoad::Initialized",
         function (e) {
           var lazyLoadInstance = e.detail.instance;
           if (window.MutationObserver) {
@@ -7770,17 +8193,27 @@
               var rocketlazy_count = 0;
               mutations.forEach(function (mutation) {
                 for (i = 0; i < mutation.addedNodes.length; i++) {
-                  if (typeof mutation.addedNodes[i].getElementsByTagName !== 'function') {
+                  if (
+                    typeof mutation.addedNodes[i].getElementsByTagName !==
+                    "function"
+                  ) {
                     continue;
                   }
-                  if (typeof mutation.addedNodes[i].getElementsByClassName !== 'function') {
+                  if (
+                    typeof mutation.addedNodes[i].getElementsByClassName !==
+                    "function"
+                  ) {
                     continue;
                   }
-                  images = mutation.addedNodes[i].getElementsByTagName('img');
-                  is_image = mutation.addedNodes[i].tagName == 'IMG';
-                  iframes = mutation.addedNodes[i].getElementsByTagName('iframe');
-                  is_iframe = mutation.addedNodes[i].tagName == 'IFRAME';
-                  rocket_lazy = mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');
+                  images = mutation.addedNodes[i].getElementsByTagName("img");
+                  is_image = mutation.addedNodes[i].tagName == "IMG";
+                  iframes =
+                    mutation.addedNodes[i].getElementsByTagName("iframe");
+                  is_iframe = mutation.addedNodes[i].tagName == "IFRAME";
+                  rocket_lazy =
+                    mutation.addedNodes[i].getElementsByClassName(
+                      "rocket-lazyload"
+                    );
                   image_count += images.length;
                   iframe_count += iframes.length;
                   rocketlazy_count += rocket_lazy.length;
@@ -7796,7 +8229,7 @@
                 lazyLoadInstance.update();
               }
             });
-            var b = document.getElementsByTagName('body')[0];
+            var b = document.getElementsByTagName("body")[0];
             var config = { childList: !0, subtree: !0 };
             observer.observe(b, config);
           }
@@ -7810,11 +8243,17 @@
       src="wp-content/plugins/wp-rocket/assets/js/lazyload/16.1/lazyload.min.js"
     ></script>
     <script>
-      $('.quiz__btn-prev, .quiz__btn-next').on('click', function () {
-        $('body, html').animate({ scrollTop: $('#quiz_block').offset().top }, 1000);
+      $(".quiz__btn-prev, .quiz__btn-next").on("click", function () {
+        $("body, html").animate(
+          { scrollTop: $("#quiz_block").offset().top },
+          1000
+        );
       });
-      $('.quiz__question input[type="radio"]').on('change', function () {
-        $('body, html').animate({ scrollTop: $('#quiz_block').offset().top }, 1000);
+      $('.quiz__question input[type="radio"]').on("change", function () {
+        $("body, html").animate(
+          { scrollTop: $("#quiz_block").offset().top },
+          1000
+        );
       });
     </script>
 
@@ -7836,7 +8275,10 @@
             data-eio="l" /></noscript
         >WhatsApp</a
       >
-      <a href="tel:+380674440595" target="_blank" style="background-color: #fdcc43; color: #0a0a0a"
+      <a
+        href="tel:+380674440595"
+        target="_blank"
+        style="background-color: #fdcc43; color: #0a0a0a"
         ><img
           src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
           alt=""
@@ -7851,5 +8293,23 @@
         >Зателефонувати</a
       >
     </div>
+    <script type="text/javascript">
+      window.WBK_Settings = {
+        whiteSaasCode: "962c57471c0d89e1b45d40ca66643aad",
+        serverUrl: "https://ua.envytools.com",
+      };
+      !(function () {
+        var l = document.createElement("link");
+        (l.rel = "stylesheet"),
+          (l.type = "text/css"),
+          (l.href = "https://cdn.envytools.com/widget/cbk.css"),
+          document.head.appendChild(l);
+        var t = document.createElement("script");
+        (t.type = "text/javascript"),
+          (t.async = !0),
+          (t.src = "https://cdn.envytools.com/widget/cbk.js"),
+          document.head.appendChild(t);
+      })();
+    </script>
   </body>
 </html>
