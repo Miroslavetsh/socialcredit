@@ -2624,16 +2624,16 @@
         }
 
         @media (max-width: 699px) {
-            .portfolio__title {
-                font-size: 2.125rem;
-                line-height: 1.2;
-                font-weight: 300;
-                margin-top: 3rem;
-        		padding: 0 1rem;
-            }
-        	.portfolio__title br{
-        		display: none
-        	}
+          .portfolio__title {
+              font-size: 2.125rem;
+              line-height: 1.2;
+              font-weight: 300;
+              margin-top: 3rem;
+              padding: 0 1rem;
+          }
+          .portfolio__title br {
+              display: none;
+          }
         }
 
         .portfolio__title3 {
@@ -5451,6 +5451,43 @@
         .list-inline li:first-child:before{
         	display: none
         }
+
+        .privacy-policy address p {
+          color: #bbbac0;
+          font-size: 14px;
+          margin-bottom: 12px;
+        }
+
+        .privacy-policy ul {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+        }
+
+        .privacy-policy ul li {
+            list-style-type: disc;
+            margin-left: 12px;
+            line-height: 1.4;
+            font-size: 13px;
+        }
+
+        .disclaimer {
+          color: #bbbac0;
+          font-size: 13px;
+          margin-top: 12px;
+        }
+
+        .disclaimer a {
+          display: block;
+          margin-top: 4px;
+          color: #5B94D9;
+        }
+
+        @media screen and (min-width: 699px) {
+          section.privacy-policy {
+            display: none;
+          }
+        }
       </style>
       <div class="main container">
         <div class="main__info">
@@ -5965,7 +6002,7 @@
                   type="button"
                   class="btn quiz__btn-next"
                   disabled
-                  style="color: ; border-radius: 10rem"
+                  style="border-radius: 10rem"
                   data-next="3"
                   data-nextperc="40"
                 >
@@ -7200,8 +7237,27 @@
       </div>
     </div>
 
-    <section>
+    <section class="privacy-policy">
       <div class="container" style="padding-bottom: 64px">
+        <address>
+          <p>
+            <span itemprop="name" class="fn org">КЦ «ДЕМІЇВСЬКИЙ»</span>,
+            02100,&nbsp;<span
+              id="office_address"
+              itemprop="address"
+              itemscope=""
+              itemtype="http://schema.org/PostalAddress"
+              class="adr"
+              ><span itemprop="addressLocality" class="locality">м. Київ</span>,
+              вул.&nbsp;<span itemprop="streetAddress" class="street-address"
+                >Червоноткацька,16</span
+              ></span
+            >, тел.:
+            <span itemprop="telephone" id="phone-3" class=""
+              >+38(073)428-3735</span
+            >
+          </p>
+        </address>
         <ul
           style="
             list-style: none;
@@ -7238,6 +7294,17 @@
             також у тих межах, в яких її можна знайти у відкритих джерелах.
           </li>
         </ul>
+
+        <div class="disclaimer">
+          <span>Всі права захищені. КЦ «ДЕМІЇВСЬКИЙ» @2025</span>
+          <br />
+          <a
+            href="https://goldinvest.com.ua/polytic.html"
+            target="_blank"
+            rel="nofollow"
+            >Політика конфіденційності</a
+          >
+        </div>
       </div>
     </section>
 
@@ -7247,7 +7314,7 @@
         <div class="footer__c container">
           <div>
             <p>Всі права захищені</p>
-            <p>Copyright © 2023</p>
+            <p>Copyright © 2025</p>
           </div>
           <div class="footer__policy">
             <p>Всі права захищені</p>
