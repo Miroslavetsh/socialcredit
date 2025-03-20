@@ -6768,25 +6768,30 @@
         $("#quiz_block").submit(function (e) {
           e.preventDefault();
 
-          //   $('.quiz__final__btn__text').hide();
-          //   $('.btn__load').show();
-          //   $('.btn quiz__final__btn').prop('disabled', true);
-          //   $('.btn quiz__final__btn').addClass('loading');
-          var form = new FormData(this);
-          console.log(form);
+          const answers = $(this).serializeArray();
 
-          //   $btn.find('.btn__load').hide();
-          //   $btn.find('.form-consult__btn-text').show();
-          // $.ajax({
-          //     url: myajax.url,
-          //     data: form,
-          //     processData: false,
-          //     contentType: false,
-          //     type: 'POST',
-          //     success: function (response) {
-          //         location.href = response;
-          //     }
-          // });
+          const q1 = answers.find((answer) => answer.name === "q1").value;
+          const q2 = answers.find((answer) => answer.name === "q3").value;
+          const q3 = answers.find((answer) => answer.name === "q4").value;
+          const q4 = answers.find((answer) => answer.name === "q5").value;
+          const name = answers.find((answer) => answer.name === "name").value;
+          const phone = answers.find((answer) => answer.name === "phone").value;
+
+          const message = `Форма заяявки\nІм'я: ${name}\nТелефон: ${phone}\nТип нерухомості: ${q1}\nСума: ${q2}\nТермін: ${q3}\nТерміновість: ${q4}`;
+
+          fetch(
+            "https://api.telegram.org/bot7974932430:AAGL09K2m9M4m7lRRaHmyE3jpKfSFvQovzw/sendMessage",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                chat_id: "-4679444106",
+                text: message,
+              }),
+            }
+          ).then(() => (window.location.href = "/thanks.html"));
         });
       </script>
     </div>
