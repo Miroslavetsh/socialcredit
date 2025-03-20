@@ -7085,6 +7085,9 @@
           "https://api.telegram.org/bot7974932430:AAGL09K2m9M4m7lRRaHmyE3jpKfSFvQovzw/sendMessage",
           {
             method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
             body: JSON.stringify({ chat_id: "-4679444106", text: message }),
           }
         ).then(() => (window.location.href = "/thanks.html"));
