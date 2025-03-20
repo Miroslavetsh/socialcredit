@@ -7076,14 +7076,19 @@
     <script>
       $(".form-consult__form").submit(function (e) {
         e.preventDefault();
-        var form = new FormData(this);
-        var file = $(this).data("file");
-        if (file) {
-          var link = document.createElement("a");
-          link.setAttribute("href", file);
-          link.setAttribute("download", "download");
-          link.click();
-        }
+        const formData = $(this).serializeArray();
+        const name = formData.find((item) => item.name === "msg").value;
+        const phone = formData.find((item) => item.name === "phone").value;
+        const message = `Форма консультації\nІм'я: ${name}\nТелефон: ${phone}`;
+
+        fetch(
+          "https://api.telegram.org/bot7974932430:AAGL09K2m9M4m7lRRaHmyE3jpKfSFvQovzw/sendMessage",
+          {
+            method: "POST",
+            body: JSON.stringify({ chat_id: "-4679444106", text: message }),
+          }
+        ).then(() => (window.location.href = "/thanks.html"));
+
         // $('.btn__load').show();
         // $('.form-consult__btn-text').hide();
 
