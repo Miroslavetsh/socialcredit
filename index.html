@@ -6777,7 +6777,7 @@
           const name = answers.find((answer) => answer.name === "name").value;
           const phone = answers.find((answer) => answer.name === "phone").value;
 
-          const message = `Форма заяявки\nІм'я: ${name}\nТелефон: ${phone}\nТип нерухомості: ${q1}\nСума: ${q2}\nТермін: ${q3}\nТерміновість: ${q4}`;
+          const message = `Форма заявки\nІм'я: ${name}\nТелефон: ${phone}\nТип нерухомості: ${q1}\nСума: ${q2}\nТермін: ${q3}\nТерміновість: ${q4}`;
 
           fetch(
             "https://api.telegram.org/bot7974932430:AAGL09K2m9M4m7lRRaHmyE3jpKfSFvQovzw/sendMessage",
@@ -7091,20 +7091,6 @@
             body: JSON.stringify({ chat_id: "-4679444106", text: message }),
           }
         ).then(() => (window.location.href = "/thanks.html"));
-
-        // $('.btn__load').show();
-        // $('.form-consult__btn-text').hide();
-
-        // $.ajax({
-        //   url: myajax.url,
-        //   data: form,
-        //   processData: false,
-        //   contentType: false,
-        //   type: 'POST',
-        //   success: function (response) {
-        //     location.href = response;
-        //   }
-        // });
       });
     </script>
 
