@@ -1274,7 +1274,7 @@
           <div class="header__contact">
             <div class="header__phone">
               <div class="header__phone__online" style="color: #686868">
-                Працюємо СБ-НД 9.00-21.00
+                Працюємо Пн-Нд 09:00-21:00
               </div>
 
               <button
@@ -6765,6 +6765,13 @@
       </form>
 
       <script>
+        function normalizePhoneNumber(phone) {
+          const digits = phone.replace(/\D/g, "");
+          return "+380" + digits.slice(3);
+        }
+      </script>
+
+      <script>
         $("#quiz_block").submit(function (e) {
           e.preventDefault();
 
@@ -6775,7 +6782,9 @@
           const q3 = answers.find((answer) => answer.name === "q4").value;
           const q4 = answers.find((answer) => answer.name === "q5").value;
           const name = answers.find((answer) => answer.name === "name").value;
-          const phone = answers.find((answer) => answer.name === "phone").value;
+          const phone = normalizePhoneNumber(
+            answers.find((answer) => answer.name === "phone").value
+          );
 
           const message = `Форма заявки\nІм'я: ${name}\nТелефон: ${phone}\nТип нерухомості: ${q1}\nСума: ${q2}\nТермін: ${q3}\nТерміновість: ${q4}`;
 
@@ -7078,7 +7087,9 @@
         e.preventDefault();
         const formData = $(this).serializeArray();
         const name = formData.find((item) => item.name === "msg").value;
-        const phone = formData.find((item) => item.name === "phone").value;
+        const phone = normalizePhoneNumber(
+          formData.find((item) => item.name === "phone").value
+        );
         const message = `Форма консультації\nІм'я: ${name}\nТелефон: ${phone}`;
 
         fetch(
