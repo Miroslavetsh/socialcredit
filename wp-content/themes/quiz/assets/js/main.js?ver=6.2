@@ -97,7 +97,10 @@ $( document ).ready(function(){
       $(btn).data('next', next_q)
       $(btn).data('nextperc', next_perc)
         window.setTimeout(function(){
-          if (next_q != 'final' && next_q != ''){
+          if (next_q === 'region-not-supported') {
+            window.location.href = '/region-not-supported.html';
+          }
+          else if (next_q != 'final' && next_q != ''){
         $('.quiz__question').removeClass('active');
         $('#q_'+next_q).addClass('active');
   
@@ -169,7 +172,10 @@ $( document ).ready(function(){
       var next_num = $(this).data('nextnum');
       var next_perc = $(this).data('nextperc');
   
-      if (next_q != 'final' && next_q != ''){
+      if (next_q === 'region-not-supported') {
+        window.location.href = '/region-not-supported.html';
+      }
+      else if (next_q != 'final' && next_q != ''){
   
         $('.quiz__question').removeClass('active');
         $('#q_'+next_q).addClass('active');

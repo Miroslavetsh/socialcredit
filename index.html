@@ -5876,8 +5876,8 @@
             data-question="2"
             id="q_2"
             data-id="2"
-            data-qtype="input-answer"
-            data-qchoose="checkbox"
+            data-qtype="singleimg-answer"
+            data-qchoose="radio"
             data-num="1"
             ;
           >
@@ -5897,44 +5897,52 @@
             </div>
 
             <div class="quiz__answers quiz__answers--single">
-              <div class="quiz__inputs-block">
-                <div class="quiz__input__wrap">
-                  <div class="quiz__input__title">Населений пункт:</div>
-                  <div class="quiz__input__group">
+              <div class="quiz__answers__block">
+                <div class="quiz__answer--txt__wrap">
+                  <label class="quiz__answer--txt" style="border-radius: 10rem">
                     <input
-                      type="text"
-                      class="quiz__input"
-                      name=""
-                      placeholder="Київ"
-                      style="border-radius: 10rem"
+                      type="radio"
+                      name="q2"
+                      value="Київ та область"
+                      class="visually-hidden"
+                      data-next="3"
+                      data-perc="40"
                     />
-                    <div class="quiz__input__ms"></div>
-                  </div>
+                    <p style="border-radius: 10rem">
+                      Київ та область
+                    </p>
+                  </label>
                 </div>
-                <div class="quiz__input__wrap">
-                  <div class="quiz__input__title">Площа:</div>
-                  <div class="quiz__input__group">
+                <div class="quiz__answer--txt__wrap">
+                  <label class="quiz__answer--txt" style="border-radius: 10rem">
                     <input
-                      type="text"
-                      class="quiz__input"
-                      name=""
-                      placeholder=""
-                      style="border-radius: 10rem"
+                      type="radio"
+                      name="q2"
+                      value="Одеса та область"
+                      class="visually-hidden"
+                      data-next="3"
+                      data-perc="40"
                     />
-                    <div class="quiz__input__ms">м²</div>
-                  </div>
+                    <p style="border-radius: 10rem">
+                      Одеса та область
+                    </p>
+                  </label>
                 </div>
-                <label class="quiz__final__agreement" style="font-size: 1rem">
-                  <input
-                    type="checkbox"
-                    name="agreement"
-                    class="visually-hidden"
-                  />
-                  <div class="quiz__final__agreement__check"></div>
-                  <div class="quiz__final__agreement__text">
-                    Не хочу відповідати
-                  </div>
-                </label>
+                <div class="quiz__answer--txt__wrap">
+                  <label class="quiz__answer--txt" style="border-radius: 10rem">
+                    <input
+                      type="radio"
+                      name="q2"
+                      value="Інший регіон"
+                      class="visually-hidden"
+                      data-next="region-not-supported"
+                      data-perc="40"
+                    />
+                    <p style="border-radius: 10rem">
+                      Інший регіон
+                    </p>
+                  </label>
+                </div>
               </div>
               <div class="quiz__answers__img">
                 <img src="index.html" alt="" />
@@ -6120,8 +6128,8 @@
                     name="q4"
                     value="до 1 року"
                     class="visually-hidden"
-                    data-next="5"
-                    data-perc="80"
+                    data-next=""
+                    data-perc="100"
                   />
                   <p style="border-radius: 10rem">до 1 року</p>
                 </label>
@@ -6140,8 +6148,8 @@
                     name="q4"
                     value="до 5 років"
                     class="visually-hidden"
-                    data-next="5"
-                    data-perc="80"
+                    data-next=""
+                    data-perc="100"
                   />
                   <p style="border-radius: 10rem">до 3 років</p>
                 </label>
@@ -6158,10 +6166,10 @@
                   <input
                     type="radio"
                     name="q4"
-                    value="від 5 років та вище"
+                    value="від 5 років та више"
                     class="visually-hidden"
-                    data-next="5"
-                    data-perc="80"
+                    data-next=""
+                    data-perc="100"
                   />
                   <p style="border-radius: 10rem">від 3 років та вище</p>
                 </label>
@@ -6193,151 +6201,10 @@
               </div>
             </div>
           </div>
-          <div
-            class="quiz__question"
-            data-question="5"
-            id="q_5"
-            data-id="5"
-            data-qtype="text-answer"
-            data-qchoose="radio"
-            data-num="1"
-            ;
-          >
-            <div class="visually-hidden" id="hint_5">
-              Дайте відповідь на кілька питань щоб розрахувати суму позики
-            </div>
-            <div class="quiz__question__head">
-              <div class="quiz__question__progress" style="border-radius: 1rem">
-                Питання <span class="q_num" id="num_5">1</span>
-              </div>
-              <div class="quiz__question__title">
-                Як терміново вам потрібні гроші?
-              </div>
-            </div>
 
-            <div class="quiz__answers quiz__answers--text">
-              <div class="quiz__answer--txt__wrap">
-                <label class="quiz__answer--txt">
-                  <input
-                    type="radio"
-                    name="q5"
-                    value="Терміново (1-2 дні)"
-                    class="visually-hidden"
-                    data-next=""
-                    data-perc="90"
-                  />
-                  <p style="border-radius: 10rem">Терміново (1-2 дні)</p>
-                </label>
-              </div>
-              <div class="quiz__answer--txt__wrap">
-                <label class="quiz__answer--txt">
-                  <input
-                    type="radio"
-                    name="q5"
-                    value="Досить терміново (протягом тижня)"
-                    class="visually-hidden"
-                    data-next=""
-                    data-perc="90"
-                  />
-                  <p style="border-radius: 10rem">
-                    Досить терміново (протягом тижня)
-                  </p>
-                </label>
-              </div>
-              <div class="quiz__answer--txt__wrap">
-                <label class="quiz__answer--txt">
-                  <input
-                    type="radio"
-                    name="q5"
-                    value="На протязі місяця"
-                    class="visually-hidden"
-                    data-next=""
-                    data-perc="90"
-                  />
-                  <p style="border-radius: 10rem">На протязі місяця</p>
-                </label>
-              </div>
-            </div>
-
-            <div class="quiz__buttons">
-              <button
-                type="button"
-                class="quiz__btn-prev"
-                style="border-radius: 10rem"
-              >
-                <span> Назад </span>
-              </button>
-              <div class="quiz__btn-next__wrap">
-                <button
-                  type="button"
-                  class="btn quiz__btn-next"
-                  disabled
-                  style="border-radius: 10rem"
-                  data-next=""
-                  data-nextperc=""
-                >
-                  <span>Далі</span>
-                </button>
-                <div class="quiz__btn-help">
-                  Виберіть 1 варіант відповіді та натисніть на кнопку далі
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
 
-        <div class="quiz__left" style="border-radius: 1rem">
-          <div class="quiz__online">Онлайн</div>
-          <div class="quiz__manager">
-            <picture
-              ><source
-                type="image/webp"
-                srcset="/wp-content/uploads/2023/05/р454р_1.png" />
-              <img
-                src="/wp-content/uploads/2023/05/р454р_1.png"
-                alt=""
-                decoding="async"
-                class="lazyload"
-                width="230"
-                height="285" /><noscript
-                ><img
-                  src="/wp-content/uploads/2023/05/р454р_1.png"
-                  alt=""
-                  data-eio="l" /></noscript
-            ></picture>
-          </div>
-          <div class="quiz__manager__name">
-            <span> Артем </span>
-          </div>
-          <div class="quiz__manager__post">Кредитний експерт</div>
-          <div class="quiz__help">
-            <p></p>
-          </div>
-          <div class="quiz__gift">
-            <div class="quiz__gift__title">В кінці ви отримаєте:</div>
-            <ul>
-              <li style="border-radius: 1rem">
-                <picture
-                  ><source
-                    type="image/webp"
-                    srcset="/wp-content/uploads/2023/02/4р5п-1.jpg" />
-                  <img
-                    src="/wp-content/uploads/2023/02/4р5п-1.jpg"
-                    alt=""
-                    decoding="async"
-                    class="lazyload"
-                    width="836"
-                    height="300" /><noscript
-                    ><img
-                      src="/wp-content/uploads/2023/02/4р5п-1.jpg"
-                      alt=""
-                      data-eio="l" /></noscript
-                ></picture>
-                <p>Умови позики з розрахунком платежів за місяцями</p>
-              </li>
-            </ul>
-          </div>
-        </div>
+
 
         <div class="quiz__final">
           <div class="quiz__load">
@@ -6739,15 +6606,15 @@
           const answers = $(this).serializeArray();
 
           const q1 = answers.find((answer) => answer.name === "q1").value;
-          const q2 = answers.find((answer) => answer.name === "q3").value;
-          const q3 = answers.find((answer) => answer.name === "q4").value;
-          const q4 = answers.find((answer) => answer.name === "q5").value;
+          const q2 = answers.find((answer) => answer.name === "q2").value;
+          const q3 = answers.find((answer) => answer.name === "q3").value;
+          const q4 = answers.find((answer) => answer.name === "q4").value;
           const name = answers.find((answer) => answer.name === "name").value;
           const phone = normalizePhoneNumber(
             answers.find((answer) => answer.name === "phone").value
           );
 
-          const message = `Форма заявки\nІм'я: ${name}\nТелефон: ${phone}\nТип нерухомості: ${q1}\nСума: ${q2}\nТермін: ${q3}\nТерміновість: ${q4}`;
+          const message = `Форма заявки\nІм'я: ${name}\nТелефон: ${phone}\nТип нерухомості: ${q1}\nРегіон: ${q2}\nСума: ${q3}\nТермін: ${q4}`;
 
           fetch(
             "https://api.telegram.org/bot7974932430:AAGL09K2m9M4m7lRRaHmyE3jpKfSFvQovzw/sendMessage",
