@@ -3335,7 +3335,6 @@
             }
         }
 
-        .quiz__answer--txt__wrap .quiz__answer__hint,
         .quiz__answer--txt__wrap .quiz__answer__video {
             top: -1rem;
             right: -1.7rem;
@@ -3423,51 +3422,6 @@
         .quiz__answer--txt input:checked+p {
             border-color: var(--grad-to) ;
             text-shadow: 0 0 0.8px var(--font-color), 0 0 0.8px var(--font-color);
-        }
-
-        .quiz__answer__hint {
-            position: absolute;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            top: -1.6rem;
-            right: 0.3rem;
-            z-index: 3;
-            cursor: help;
-            padding: 1rem;
-
-        }
-
-        .quiz__answer__hint:hover .quiz__answer__hint--text {
-            transform: scale(1);
-        }
-
-        .quiz__answer__hint--circle {
-            width: 1.563rem;
-            height: 1.563rem;
-            background: linear-gradient(to top, var(--grad-from), var(--grad-to));
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 0.9rem;
-            font-weight: bold;
-            text-align: center;
-            color: #fff;
-            animation: pulse1 2s infinite;
-        }
-
-        .quiz__answer__hint--text {
-            position: absolute;
-            width: 11rem;
-            padding: 1rem;
-            font-size: 0.9rem;
-            background-color: #fff;
-            right: 70%;
-            top: 70%;
-            transform: scale(0);
-            transition: var(--transition);
-            box-shadow: 0 0 20px 0 #19191955;
         }
 
         .quiz__answer__video {
@@ -5986,8 +5940,8 @@
                 Питання <span class="q_num" id="num_3">1</span>
               </div>
               <div class="quiz__question__title">
-                Видаємо тількі <strong>від 80 тис. грн</strong>.!!! Яка сума
-                вас цікавить?
+                Видаємо тількі <strong>від 80 тис. грн</strong>.!!! Яка сума вас
+                цікавить?
               </div>
             </div>
 
@@ -6109,13 +6063,6 @@
 
             <div class="quiz__answers quiz__answers--text">
               <div class="quiz__answer--txt__wrap">
-                <div class="quiz__answer__hint">
-                  <div class="quiz__answer__hint--circle">?</div>
-                  <div class="quiz__answer__hint--text">
-                    від 2% на місяць. (30% в рік)
-                  </div>
-                </div>
-
                 <label class="quiz__answer--txt">
                   <input
                     type="radio"
@@ -6129,13 +6076,6 @@
                 </label>
               </div>
               <div class="quiz__answer--txt__wrap">
-                <div class="quiz__answer__hint">
-                  <div class="quiz__answer__hint--circle">?</div>
-                  <div class="quiz__answer__hint--text">
-                    від 1,5% на місяць. (18% в рік)
-                  </div>
-                </div>
-
                 <label class="quiz__answer--txt">
                   <input
                     type="radio"
@@ -6149,13 +6089,6 @@
                 </label>
               </div>
               <div class="quiz__answer--txt__wrap">
-                <div class="quiz__answer__hint">
-                  <div class="quiz__answer__hint--circle">?</div>
-                  <div class="quiz__answer__hint--text">
-                    від 1,0% на місяць. (12% в рік)
-                  </div>
-                </div>
-
                 <label class="quiz__answer--txt">
                   <input
                     type="radio"
