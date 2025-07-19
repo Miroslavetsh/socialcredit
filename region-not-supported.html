@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регіон не підтримується - Social Credit</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: linear-gradient(135deg, #4aa3e2 0%, #1d00ff 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #282828;
+        }
+        
+        .container {
+            background: #ffffff;
+            border-radius: 2rem;
+            padding: 3rem;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .icon {
+            width: 80px;
+            height: 80px;
+            background: #f8f9fa;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 2rem;
+            color: #6c757d;
+        }
+        
+        h1 {
+            color: #1d00ff;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        p {
+            color: #585858;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #4aa3e2 0%, #1d00ff 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(29, 0, 255, 0.3);
+        }
+        
+        .regions {
+            background: #f8f9fa;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .regions h3 {
+            color: #1d00ff;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .regions ul {
+            list-style: none;
+            text-align: left;
+        }
+        
+        .regions li {
+            padding: 0.5rem 0;
+            color: #585858;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .regions li:before {
+            content: "✓";
+            color: #28a745;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem;
+                margin: 1rem;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">🏠</div>
+        <h1>Дуже шкода, але ми працюємо лише з Київською та Одеською областями</h1>
+        
+        <div class="regions">
+            <h3>Ми надаємо послуги в таких регіонах:</h3>
+            <ul>
+                <li>Київ та Київська область</li>
+                <li>Одеса та Одеська область</li>
+            </ul>
+        </div>
+        
+        <p>На жаль, наразі ми не можемо надати послуги в інших регіонах України. Якщо ваша нерухомість знаходиться в одному з підтримуваних регіонів, будь ласка, перевірте правильність введених даних.</p>
+        
+        <a href="index.html" class="btn">Повернутися на головну</a>
+    </div>
+</body>
+</html> 

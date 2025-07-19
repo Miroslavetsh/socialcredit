@@ -1225,9 +1225,6 @@
           background: #fff url() center no-repeat;
           background-size: cover;
         }
-        .first-screen__bg img,
-        .first-screen__bg::after {
-        }
       }
       @media (max-width: 499px) {
         .nav {
@@ -2368,8 +2365,8 @@
         }
 
         .main__advantage {
-            < !--display: flex;
-            -->align-items: center;
+            /* display: flex; */
+            align-items: center;
             font-size: 1.2rem;
             letter-spacing: 0.35px;
             position: relative;
@@ -2377,8 +2374,7 @@
 
         .main__advantage p {
             margin-top: 0.8rem;
-            < !--margin-left: 0.8rem;
-            -->
+            /* margin-left: 0.8rem; */
         }
 
         .main__advantage:not(:last-child) {
@@ -2428,8 +2424,6 @@
         .main__advantage:nth-child(4)::before {
             left: 3rem;
             top: 2.5rem;
-        }
-
         }
 
         .v2 {
@@ -3086,7 +3080,6 @@
             position: relative;
         }
 
-        }
 
         .quiz__bar__prg::after {
             content: "";
@@ -3868,8 +3861,6 @@
             /* border-color: #fff; */
             color: #fff;
             border: 1px solid #ffffff;
-            "
-
         }
 
         .sale2 {
@@ -3884,8 +3875,6 @@
             /* border-color: #fff; */
             color: #fff;
             border: 1px solid #ffffff;
-            "
-
         }
 
         .fon1 {
@@ -3930,8 +3919,6 @@
                 margin-top: -14rem;
                 margin-left: 1rem;
                 color: #fff;
-                "
-
             }
         }
 
@@ -4717,7 +4704,8 @@
             padding-bottom: 3rem;
             border-radius: 25px;
             background-color: #ededed;
-            margin: auto; // background-image: url(wp-content/themes/quiz/assets/img/popup-bg.png);
+            margin: auto;
+            background-image: url(wp-content/themes/quiz/assets/img/popup-bg.png);
             background-size: cover;
             padding-top: 4.3rem;
             position: relative;
@@ -4971,16 +4959,16 @@
             }
         }
 
-        .editor h1,
+        /* .editor h1,
         .editor h2,
         .editor h3,
         .editor h4,
         .editor h5,
         .editor h6,
         .editor p {
-        /*     margin: 1rem 0; */
-        /*     margin-left: 0.5rem; */
-        }
+            margin: 1rem 0;
+            margin-left: 0.5rem;
+        } */
 
         .editor p {
             font-size: 1.125rem;
@@ -5479,7 +5467,7 @@
           </div>
           <h1 class="main__title wow fadeInUp" style="color: #000000">
             <span class="fw-bold">Кредит під заставу нерухомості</span> у Києві
-            та Одесі від 17,9% річних. Від 100 тис.грн.
+            та Одесі від 17,9% річних. Від 80 тис.грн.
           </h1>
 
           <h3 class="main__title rfv" style="color: #000000">
@@ -5594,13 +5582,11 @@
           <div class="main__btn-wrap">
             <button
               class="main__btn btn"
-              onclick="
-                                                  $('body, html').animate({scrollTop: $('#quiz_content').offset().top}, 1000);
-                                                                          "
+              onclick="$('body, html').animate({scrollTop: $('#quiz_content').offset().top}, 1000);"
               style="border-radius: 10rem"
             >
               <span>
-                <span class="main__btn__text" style="color: ">
+                <span class="main__btn__text">
                   <img src="index.html" style="max-width: 2.3rem" alt="" />
                   &nbsp;&nbsp;РОЗРАХУВАТИ СУМУ ПОЗИКИ
                 </span>
@@ -5890,8 +5876,8 @@
             data-question="2"
             id="q_2"
             data-id="2"
-            data-qtype="input-answer"
-            data-qchoose="checkbox"
+            data-qtype="singleimg-answer"
+            data-qchoose="radio"
             data-num="1"
             ;
           >
@@ -5899,10 +5885,7 @@
               Дайте відповідь на кілька питань щоб розрахувати суму позики
             </div>
             <div class="quiz__question__head">
-              <div
-                class="quiz__question__progress"
-                style="border-radius: 1rem; color: "
-              >
+              <div class="quiz__question__progress" style="border-radius: 1rem">
                 Питання <span class="q_num" id="num_2">1</span>
               </div>
               <div class="quiz__question__title">
@@ -5914,44 +5897,46 @@
             </div>
 
             <div class="quiz__answers quiz__answers--single">
-              <div class="quiz__inputs-block">
-                <div class="quiz__input__wrap">
-                  <div class="quiz__input__title">Населений пункт:</div>
-                  <div class="quiz__input__group">
+              <div class="quiz__answers__block">
+                <div class="quiz__answer--txt__wrap">
+                  <label class="quiz__answer--txt" style="border-radius: 10rem">
                     <input
-                      type="text"
-                      class="quiz__input"
-                      name=""
-                      placeholder="Київ"
-                      style="border-radius: 10rem"
+                      type="radio"
+                      name="q2"
+                      value="Київ та область"
+                      class="visually-hidden"
+                      data-next="3"
+                      data-perc="40"
                     />
-                    <div class="quiz__input__ms"></div>
-                  </div>
+                    <p style="border-radius: 10rem">Київ та область</p>
+                  </label>
                 </div>
-                <div class="quiz__input__wrap">
-                  <div class="quiz__input__title">Площа:</div>
-                  <div class="quiz__input__group">
+                <div class="quiz__answer--txt__wrap">
+                  <label class="quiz__answer--txt" style="border-radius: 10rem">
                     <input
-                      type="text"
-                      class="quiz__input"
-                      name=""
-                      placeholder=""
-                      style="border-radius: 10rem"
+                      type="radio"
+                      name="q2"
+                      value="Одеса та область"
+                      class="visually-hidden"
+                      data-next="3"
+                      data-perc="40"
                     />
-                    <div class="quiz__input__ms">м²</div>
-                  </div>
+                    <p style="border-radius: 10rem">Одеса та область</p>
+                  </label>
                 </div>
-                <label class="quiz__final__agreement" style="font-size: 1rem">
-                  <input
-                    type="checkbox"
-                    name="agreement"
-                    class="visually-hidden"
-                  />
-                  <div class="quiz__final__agreement__check"></div>
-                  <div class="quiz__final__agreement__text">
-                    Не хочу відповідати
-                  </div>
-                </label>
+                <div class="quiz__answer--txt__wrap">
+                  <label class="quiz__answer--txt" style="border-radius: 10rem">
+                    <input
+                      type="radio"
+                      name="q2"
+                      value="Інший регіон"
+                      class="visually-hidden"
+                      data-next="region-not-supported"
+                      data-perc="40"
+                    />
+                    <p style="border-radius: 10rem">Інший регіон</p>
+                  </label>
+                </div>
               </div>
               <div class="quiz__answers__img">
                 <img src="index.html" alt="" />
@@ -5997,14 +5982,11 @@
               Дайте відповідь на кілька питань щоб розрахувати суму позики
             </div>
             <div class="quiz__question__head">
-              <div
-                class="quiz__question__progress"
-                style="border-radius: 1rem; color: "
-              >
+              <div class="quiz__question__progress" style="border-radius: 1rem">
                 Питання <span class="q_num" id="num_3">1</span>
               </div>
               <div class="quiz__question__title">
-                Видаємо тількі <strong>від 100 тис. грн</strong>.!!! Яка сума
+                Видаємо тількі <strong>від 80 тис. грн</strong>.!!! Яка сума
                 вас цікавить?
               </div>
             </div>
@@ -6016,13 +5998,13 @@
                     <input
                       type="radio"
                       name="q3"
-                      value="до 100 тис. грн (за 1 годину)"
+                      value="від 80 тис. до 1 млн. грн."
                       class="visually-hidden"
                       data-next="4"
                       data-perc="60"
                     />
                     <p style="border-radius: 10rem">
-                      від 100 тис. до 1 млн. грн.
+                      від 80 тис. до 1 млн. грн.
                     </p>
                   </label>
                 </div>
@@ -6031,7 +6013,7 @@
                     <input
                       type="radio"
                       name="q3"
-                      value="до 1 млн. грн"
+                      value="від 1 млн. до 5 млн. грн."
                       class="visually-hidden"
                       data-next="4"
                       data-perc="60"
@@ -6046,7 +6028,7 @@
                     <input
                       type="radio"
                       name="q3"
-                      value="до 15 млн. грн"
+                      value="від 5 млн. до 35 млн. грн."
                       class="visually-hidden"
                       data-next="4"
                       data-perc="60"
@@ -6091,7 +6073,7 @@
                   type="button"
                   class="btn quiz__btn-next"
                   disabled
-                  style="color: ; border-radius: 10rem"
+                  style="border-radius: 10rem"
                   data-next=""
                   data-nextperc=""
                 >
@@ -6117,10 +6099,7 @@
               Дайте відповідь на кілька питань щоб розрахувати суму позики
             </div>
             <div class="quiz__question__head">
-              <div
-                class="quiz__question__progress"
-                style="border-radius: 1rem; color: "
-              >
+              <div class="quiz__question__progress" style="border-radius: 1rem">
                 Питання <span class="q_num" id="num_4">1</span>
               </div>
               <div class="quiz__question__title">
@@ -6133,7 +6112,7 @@
                 <div class="quiz__answer__hint">
                   <div class="quiz__answer__hint--circle">?</div>
                   <div class="quiz__answer__hint--text">
-                    от 2% в мес. (30% в год)
+                    від 2% на місяць. (30% в рік)
                   </div>
                 </div>
 
@@ -6143,8 +6122,8 @@
                     name="q4"
                     value="до 1 року"
                     class="visually-hidden"
-                    data-next="5"
-                    data-perc="80"
+                    data-next=""
+                    data-perc="100"
                   />
                   <p style="border-radius: 10rem">до 1 року</p>
                 </label>
@@ -6153,7 +6132,7 @@
                 <div class="quiz__answer__hint">
                   <div class="quiz__answer__hint--circle">?</div>
                   <div class="quiz__answer__hint--text">
-                    от 1,5% в мес. (18% в год)
+                    від 1,5% на місяць. (18% в рік)
                   </div>
                 </div>
 
@@ -6161,10 +6140,10 @@
                   <input
                     type="radio"
                     name="q4"
-                    value="до 5 років"
+                    value="до 3 років"
                     class="visually-hidden"
-                    data-next="5"
-                    data-perc="80"
+                    data-next=""
+                    data-perc="100"
                   />
                   <p style="border-radius: 10rem">до 3 років</p>
                 </label>
@@ -6173,7 +6152,7 @@
                 <div class="quiz__answer__hint">
                   <div class="quiz__answer__hint--circle">?</div>
                   <div class="quiz__answer__hint--text">
-                    от 1,0% в мес. (12% в год)
+                    від 1,0% на місяць. (12% в рік)
                   </div>
                 </div>
 
@@ -6181,10 +6160,10 @@
                   <input
                     type="radio"
                     name="q4"
-                    value="від 5 років та вище"
+                    value="від 3 років та вище"
                     class="visually-hidden"
-                    data-next="5"
-                    data-perc="80"
+                    data-next=""
+                    data-perc="100"
                   />
                   <p style="border-radius: 10rem">від 3 років та вище</p>
                 </label>
@@ -6204,101 +6183,7 @@
                   type="button"
                   class="btn quiz__btn-next"
                   disabled
-                  style="color: ; border-radius: 10rem"
-                  data-next=""
-                  data-nextperc=""
-                >
-                  <span>Далі</span>
-                </button>
-                <div class="quiz__btn-help">
-                  Виберіть 1 варіант відповіді та натисніть на кнопку далі
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="quiz__question"
-            data-question="5"
-            id="q_5"
-            data-id="5"
-            data-qtype="text-answer"
-            data-qchoose="radio"
-            data-num="1"
-            ;
-          >
-            <div class="visually-hidden" id="hint_5">
-              Дайте відповідь на кілька питань щоб розрахувати суму позики
-            </div>
-            <div class="quiz__question__head">
-              <div
-                class="quiz__question__progress"
-                style="border-radius: 1rem; color: "
-              >
-                Питання <span class="q_num" id="num_5">1</span>
-              </div>
-              <div class="quiz__question__title">
-                Як терміново вам потрібні гроші?
-              </div>
-            </div>
-
-            <div class="quiz__answers quiz__answers--text">
-              <div class="quiz__answer--txt__wrap">
-                <label class="quiz__answer--txt">
-                  <input
-                    type="radio"
-                    name="q5"
-                    value="Терміново (1-2 дні)"
-                    class="visually-hidden"
-                    data-next=""
-                    data-perc="90"
-                  />
-                  <p style="border-radius: 10rem">Терміново (1-2 дні)</p>
-                </label>
-              </div>
-              <div class="quiz__answer--txt__wrap">
-                <label class="quiz__answer--txt">
-                  <input
-                    type="radio"
-                    name="q5"
-                    value="Досить терміново (протягом тижня)"
-                    class="visually-hidden"
-                    data-next=""
-                    data-perc="90"
-                  />
-                  <p style="border-radius: 10rem">
-                    Досить терміново (протягом тижня)
-                  </p>
-                </label>
-              </div>
-              <div class="quiz__answer--txt__wrap">
-                <label class="quiz__answer--txt">
-                  <input
-                    type="radio"
-                    name="q5"
-                    value="На протязі місяця"
-                    class="visually-hidden"
-                    data-next=""
-                    data-perc="90"
-                  />
-                  <p style="border-radius: 10rem">На протязі місяця</p>
-                </label>
-              </div>
-            </div>
-
-            <div class="quiz__buttons">
-              <button
-                type="button"
-                class="quiz__btn-prev"
-                style="border-radius: 10rem"
-              >
-                <span> Назад </span>
-              </button>
-              <div class="quiz__btn-next__wrap">
-                <button
-                  type="button"
-                  class="btn quiz__btn-next"
-                  disabled
-                  style="color: ; border-radius: 10rem"
+                  style="border-radius: 10rem"
                   data-next=""
                   data-nextperc=""
                 >
@@ -6359,9 +6244,7 @@
                       alt=""
                       data-eio="l" /></noscript
                 ></picture>
-                <p style="color: ">
-                  Умови позики з розрахунком платежів за місяцями
-                </p>
+                <p>Умови позики з розрахунком платежів за місяцями</p>
               </li>
             </ul>
           </div>
@@ -6767,15 +6650,15 @@
           const answers = $(this).serializeArray();
 
           const q1 = answers.find((answer) => answer.name === "q1").value;
-          const q2 = answers.find((answer) => answer.name === "q3").value;
-          const q3 = answers.find((answer) => answer.name === "q4").value;
-          const q4 = answers.find((answer) => answer.name === "q5").value;
+          const q2 = answers.find((answer) => answer.name === "q2").value;
+          const q3 = answers.find((answer) => answer.name === "q3").value;
+          const q4 = answers.find((answer) => answer.name === "q4").value;
           const name = answers.find((answer) => answer.name === "name").value;
           const phone = normalizePhoneNumber(
             answers.find((answer) => answer.name === "phone").value
           );
 
-          const message = `Форма заявки\nІм'я: ${name}\nТелефон: ${phone}\nТип нерухомості: ${q1}\nСума: ${q2}\nТермін: ${q3}\nТерміновість: ${q4}`;
+          const message = `Форма заявки\nІм'я: ${name}\nТелефон: ${phone}\nТип нерухомості: ${q1}\nРегіон: ${q2}\nСума: ${q3}\nТермін: ${q4}`;
 
           fetch(
             "https://api.telegram.org/bot7974932430:AAGL09K2m9M4m7lRRaHmyE3jpKfSFvQovzw/sendMessage",
@@ -6797,7 +6680,7 @@
     <div class="widget__wrap">
       <div class="widget-close close"></div>
       <div class="widget">
-        <p>Вы отримаєте:</p>
+        <p>Ви отримаєте:</p>
         <div class="widget__item">
           <a
             onclick=" $('body, html').animate({scrollTop: $('#quiz_content').offset().top}, 1000);"
@@ -6824,6 +6707,7 @@
           </a>
         </div>
 
+        <!-- Temporary Hidden 
         <div class="widget__item">
           <a onClick="$('#consult-popup').fadeIn()">
             <div class="widget__item__icon">
@@ -6846,7 +6730,7 @@
             </div>
             <p>Безкоштовну консультацію</p>
           </a>
-        </div>
+        </div> -->
 
         <div class="widget__item">
           <a onClick="$('#calculat').fadeIn()">
@@ -6868,7 +6752,7 @@
                     data-eio="l" /></noscript
               ></picture>
             </div>
-            <p style="color: ">Приклад розрахунку кредиту</p>
+            <p>Приклад розрахунку кредиту</p>
           </a>
         </div>
       </div>
@@ -6994,9 +6878,7 @@
                     ></animateTransform>
                   </circle>
                 </svg>
-                <span class="form-consult__btn-text" style="color: ">
-                  Чекаю дзвінка
-                </span>
+                <span class="form-consult__btn-text"> Чекаю дзвінка </span>
               </button>
               <label class="quiz__final__agreement">
                 <input
