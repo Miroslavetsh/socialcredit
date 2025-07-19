@@ -1225,9 +1225,6 @@
           background: #fff url() center no-repeat;
           background-size: cover;
         }
-        .first-screen__bg img,
-        .first-screen__bg::after {
-        }
       }
       @media (max-width: 499px) {
         .nav {
@@ -2368,8 +2365,8 @@
         }
 
         .main__advantage {
-            < !--display: flex;
-            -->align-items: center;
+            /* display: flex; */
+            align-items: center;
             font-size: 1.2rem;
             letter-spacing: 0.35px;
             position: relative;
@@ -2377,8 +2374,7 @@
 
         .main__advantage p {
             margin-top: 0.8rem;
-            < !--margin-left: 0.8rem;
-            -->
+            /* margin-left: 0.8rem; */
         }
 
         .main__advantage:not(:last-child) {
@@ -2428,8 +2424,6 @@
         .main__advantage:nth-child(4)::before {
             left: 3rem;
             top: 2.5rem;
-        }
-
         }
 
         .v2 {
@@ -3086,7 +3080,6 @@
             position: relative;
         }
 
-        }
 
         .quiz__bar__prg::after {
             content: "";
@@ -3868,8 +3861,6 @@
             /* border-color: #fff; */
             color: #fff;
             border: 1px solid #ffffff;
-            "
-
         }
 
         .sale2 {
@@ -3884,8 +3875,6 @@
             /* border-color: #fff; */
             color: #fff;
             border: 1px solid #ffffff;
-            "
-
         }
 
         .fon1 {
@@ -3930,8 +3919,6 @@
                 margin-top: -14rem;
                 margin-left: 1rem;
                 color: #fff;
-                "
-
             }
         }
 
@@ -4717,7 +4704,8 @@
             padding-bottom: 3rem;
             border-radius: 25px;
             background-color: #ededed;
-            margin: auto; // background-image: url(wp-content/themes/quiz/assets/img/popup-bg.png);
+            margin: auto;
+            background-image: url(wp-content/themes/quiz/assets/img/popup-bg.png);
             background-size: cover;
             padding-top: 4.3rem;
             position: relative;
@@ -4971,16 +4959,16 @@
             }
         }
 
-        .editor h1,
+        /* .editor h1,
         .editor h2,
         .editor h3,
         .editor h4,
         .editor h5,
         .editor h6,
         .editor p {
-        /*     margin: 1rem 0; */
-        /*     margin-left: 0.5rem; */
-        }
+            margin: 1rem 0;
+            margin-left: 0.5rem;
+        } */
 
         .editor p {
             font-size: 1.125rem;
@@ -5594,13 +5582,11 @@
           <div class="main__btn-wrap">
             <button
               class="main__btn btn"
-              onclick="
-                                                  $('body, html').animate({scrollTop: $('#quiz_content').offset().top}, 1000);
-                                                                          "
+              onclick="$('body, html').animate({scrollTop: $('#quiz_content').offset().top}, 1000);"
               style="border-radius: 10rem"
             >
               <span>
-                <span class="main__btn__text" style="color: ">
+                <span class="main__btn__text">
                   <img src="index.html" style="max-width: 2.3rem" alt="" />
                   &nbsp;&nbsp;РОЗРАХУВАТИ СУМУ ПОЗИКИ
                 </span>
@@ -5899,10 +5885,7 @@
               Дайте відповідь на кілька питань щоб розрахувати суму позики
             </div>
             <div class="quiz__question__head">
-              <div
-                class="quiz__question__progress"
-                style="border-radius: 1rem; color: "
-              >
+              <div class="quiz__question__progress" style="border-radius: 1rem">
                 Питання <span class="q_num" id="num_2">1</span>
               </div>
               <div class="quiz__question__title">
@@ -5997,10 +5980,7 @@
               Дайте відповідь на кілька питань щоб розрахувати суму позики
             </div>
             <div class="quiz__question__head">
-              <div
-                class="quiz__question__progress"
-                style="border-radius: 1rem; color: "
-              >
+              <div class="quiz__question__progress" style="border-radius: 1rem">
                 Питання <span class="q_num" id="num_3">1</span>
               </div>
               <div class="quiz__question__title">
@@ -6091,7 +6071,7 @@
                   type="button"
                   class="btn quiz__btn-next"
                   disabled
-                  style="color: ; border-radius: 10rem"
+                  style="border-radius: 10rem"
                   data-next=""
                   data-nextperc=""
                 >
@@ -6117,10 +6097,7 @@
               Дайте відповідь на кілька питань щоб розрахувати суму позики
             </div>
             <div class="quiz__question__head">
-              <div
-                class="quiz__question__progress"
-                style="border-radius: 1rem; color: "
-              >
+              <div class="quiz__question__progress" style="border-radius: 1rem">
                 Питання <span class="q_num" id="num_4">1</span>
               </div>
               <div class="quiz__question__title">
@@ -6204,7 +6181,7 @@
                   type="button"
                   class="btn quiz__btn-next"
                   disabled
-                  style="color: ; border-radius: 10rem"
+                  style="border-radius: 10rem"
                   data-next=""
                   data-nextperc=""
                 >
@@ -6230,10 +6207,7 @@
               Дайте відповідь на кілька питань щоб розрахувати суму позики
             </div>
             <div class="quiz__question__head">
-              <div
-                class="quiz__question__progress"
-                style="border-radius: 1rem; color: "
-              >
+              <div class="quiz__question__progress" style="border-radius: 1rem">
                 Питання <span class="q_num" id="num_5">1</span>
               </div>
               <div class="quiz__question__title">
@@ -6298,7 +6272,7 @@
                   type="button"
                   class="btn quiz__btn-next"
                   disabled
-                  style="color: ; border-radius: 10rem"
+                  style="border-radius: 10rem"
                   data-next=""
                   data-nextperc=""
                 >
@@ -6359,9 +6333,7 @@
                       alt=""
                       data-eio="l" /></noscript
                 ></picture>
-                <p style="color: ">
-                  Умови позики з розрахунком платежів за місяцями
-                </p>
+                <p>Умови позики з розрахунком платежів за місяцями</p>
               </li>
             </ul>
           </div>
@@ -6868,7 +6840,7 @@
                     data-eio="l" /></noscript
               ></picture>
             </div>
-            <p style="color: ">Приклад розрахунку кредиту</p>
+            <p>Приклад розрахунку кредиту</p>
           </a>
         </div>
       </div>
@@ -6994,9 +6966,7 @@
                     ></animateTransform>
                   </circle>
                 </svg>
-                <span class="form-consult__btn-text" style="color: ">
-                  Чекаю дзвінка
-                </span>
+                <span class="form-consult__btn-text"> Чекаю дзвінка </span>
               </button>
               <label class="quiz__final__agreement">
                 <input
